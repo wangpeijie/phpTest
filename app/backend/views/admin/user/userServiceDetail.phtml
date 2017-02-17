@@ -1,0 +1,56 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_service', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>客服聊天记录</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="editInfo overlength clearfix">
+            聊天记录：
+            <div class="chatRecord"><!--留言框-->
+                <div class="customerChat clearfix"><!--客户留言-->
+                    <div class="nameBox fr">
+                        <p>13800000000</p>
+                        <p>中郭jack</p>
+                        <p class="color999">2016/12/12 12:12</p>
+                    </div>
+                    <div class="chatContent fr">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. 
+                    </div>
+                </div>
+                <div class="customerChat clearfix"><!--客服留言-->
+                    <div class="nameBox fl">
+                        <p>13800000000</p>
+                        <p>中郭jack</p>
+                        <p class="color999">2016/12/12 12:12</p>
+                    </div>
+                    <div class="chatContent fl">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. 
+                    </div>
+                </div>
+            </div>          
+            <div class="formList mt30">
+                <div class="formListL">回复内容</div>
+                <div class="formListR">
+                    <textarea class="inputNormal"></textarea>
+                </div>
+                <div class="formListR">
+                    <label><input type="checkbox"><div class="select"></div>处理完毕</label>
+                </div>
+            </div>
+            <div class="formList mt20">
+                <div class="formListR">
+                    <a href="javascript:;" class="mainBtn">提交</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

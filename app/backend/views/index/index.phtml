@@ -1,0 +1,142 @@
+<link href="/web/js/plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+<style>
+    /*openIframe_head*/
+    .openIframe{
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index:99;
+    }
+    .openIframeContainer{
+        position:fixed;
+        right:0;
+        top:0;
+        bottom:0;
+        box-shadow:0 0  5px #ccc;
+        background:#fff;
+        z-index:99;
+        overflow:hidden;
+    }
+    .openIframeBox{
+        position:relative;
+        height:100%;
+        overflow:hidden;
+    }
+    .openIframe_head{
+        position:absolute;
+        top:0px;
+        left:0;
+        right:0;
+        padding:0 20px;
+        background:#ccc;
+        height:60px;
+        line-height:60px;
+    }
+    .openIframe_body{
+        height:100%;
+        width:100%;
+        margin-top: 30px;
+    }
+    .openIframeContainer a[role="close"]{
+        font-size:24px;
+    }
+    .openIframeContainer a[role="confirm"]{
+        line-height:40px;
+        font-size:18px;
+        margin:10px 20px 0 0;
+    }
+    .openIframeContainer .title{
+        margin-left:30px;
+    }
+    iframe{
+        border: 0px;
+    }
+</style>
+<div class="wraper">
+    <a href="javascript:;" role="iframe">打开右侧弹框</a>
+</div>
+
+<script src="/web/js/plugins/swiper/swiper-3.3.1.jquery.min.js" type="text/javascript"></script>
+<script>
+
+        $(function () {
+//                var data={
+//                        password:'123456'
+//                };
+//                rpcJSON('encrypt',data,function(e){
+//                        alert('123');
+//                },function(msg){
+//                        alert('456');
+//                },'/admin/rpc');
+
+            $('.wraper').delegate('a[role]', 'click', function () {
+                var $this = $(this), role = $this.attr('role');
+                switch (role) {
+                    case 'iframe':
+                        openIframe({
+                            title: '测试',
+                            url: 'http://www.tuiyachina.com'
+                        });
+                        break;
+                }
+            });
+            /*右侧打开iframe*/
+            function openIframe(opts) {
+                var options = $.extend('', {
+                    target: '',
+                    title: '',
+                    url: '',
+                    ConfirmText: '保存',
+                    width: '',
+                    outerClose: true, //点击弹出框外围是否自动关闭
+                }, opts);
+                var html = $('<div><div class="openIframe"><div class="openIframeContainer">' +
+                        '<div class="openIframeBox">' +
+                        '<div class="openIframe_head">' +
+                        '<p class=""><a href="javascript:;" role="close"><i class="icon-close"></i></a><span class="title">' + options.title + '</span></p>' +
+                        '</div>' +
+                        '<div class="openIframe_body">' +
+                        '<iframe class="openIframe_body" src="' + options.url + '"></iframe></div>' +
+                        '</div>' +
+                        '</div></div></div>');
+                var parent = options.target || $('body'),
+                        openIframeContainer = $('.openIframeContainer', html);
+                parent.append(html);
+                options.open = function () {
+                    openIframeContainer.animate({
+                        left: options.width || '60%'
+                    });
+                };
+                options.close = function () {
+                    openIframeContainer.animate({
+                        left: 100 + '%'
+                    }, '', function () {
+                        html.remove();
+                    });
+                };
+                $('iframe', html).load(function () {
+                    if ($('iframe', html).contents().find('a[role="submit"]')) {
+                        $('iframe', html).contents().find('a[role="submit"]').attr('class', 'openIframeBtn mainBtn').text(options.ConfirmText);
+                        $('iframe', html).contents().find('a[role="submit"]').parent().attr('class', 'openIframeBtn_box');
+                    }
+                });
+                options.open();
+                html.delegate('a[role]', 'click', function (e) {
+                    e.stopPropagation();
+                    var $this = $(this),
+                            role = $this.attr('role');
+                    switch (role) {
+                        case 'close':
+                            options.close();
+                            break;
+                    }
+                }).delegate('.openIframe', 'click', function () {
+                    if (options.outerClose) {
+                        options.close();
+                    }
+                });
+            }
+        });
+</script>

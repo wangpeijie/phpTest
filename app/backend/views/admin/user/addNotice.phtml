@@ -1,0 +1,42 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_notice', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>添加自定义通知</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="editInfo clearfix">
+            <div class="formList">
+                <div class="formListL">任务名称</div>
+                <div class="formListR"><input type="text" class="inputNormal"></div>
+            </div>
+            <div class="formList">
+                <div class="formListL">发送对象</div>
+                <div class="formListR">
+                    <label><input type="checkBox" name="send" checked value="所有"><div class="select"></div>所有</label>
+                    <label><input type="checkBox" name="send" value="普通会员"><div class="select"></div>普通会员</label>
+                    <label><input type="checkBox" name="send" value="VIP会员"><div class="select"></div>VIP会员</label>
+                    <br>
+                    <a href="javascript:;" class="mainBtn">选择地区</a>
+                </div>
+            </div>
+            <div class="formList">
+                <div class="formListL">通知内容</div>
+                <div class="formListR">
+                    <textarea class="inputNormal"></textarea>
+                </div>
+            </div>
+            <div class="formList mt20">
+                <a href="javascript:;" class="mainBtn">确定</a>
+            </div>
+        </div>
+    </div>
+</div>

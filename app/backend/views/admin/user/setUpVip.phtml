@@ -1,0 +1,92 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_vip', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>VIP设置</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="itemTitle">
+            VIP价格设置
+        </div>
+        <div class="editInfo clearfix">
+            <div class="vipPrice">
+                <table width="50%%" border="0" cellspacing="0" cellpadding="0">                    	
+                    <tbody>
+                        <tr>
+                            <td>时间</td>
+                            <td>原价</td>
+                            <td>现价</td>
+                            <td>短信</td>
+                            <td>小秘书</td>
+                            <td>操作</td>
+                        </tr>
+                        <tr>
+                            <td>3个月</td>
+                            <td>120</td>
+                            <td>100元</td>
+                            <td>100条</td>
+                            <td>100个</td>
+                            <td><a href="javascript:;"><i class="icon-edit"></i></a><a href="javascript:;"><i class="icon-delete"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>3个月</td>
+                            <td>120</td>
+                            <td>100元</td>
+                            <td>100条</td>
+                            <td>100个</td>
+                            <td><a href="javascript:;"><i class="icon-edit"></i></a><a href="javascript:;"><i class="icon-delete"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>3个月</td>
+                            <td>120</td>
+                            <td>100元</td>
+                            <td>100条</td>
+                            <td>100个</td>
+                            <td><a href="javascript:;"><i class="icon-edit"></i></a><a href="javascript:;"><i class="icon-delete"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <a href="javascript:;" class="addBtn"><i class="icon-add"></i></a>
+        </div>
+        <div class="itemTitle">
+            短信价格设置
+        </div>
+        <div class="editInfo overlength clearfix">
+            <div class="formList">
+                <div class="formListL">单次短信价格</div>
+                <div class="formListR"><input type="text" class="msgInput" value="0.1"><span class="ml10">元</span></div>
+            </div>
+            <div class="formList">
+                <div class="formListL">短信内容</div>
+                <div class="formListR">
+                    <textarea class="inputNormal" placeholder="请输入短信内容"></textarea>
+                </div>
+            </div>
+            <div class="formList mt20">
+                <a href="javascript:;" class="mainBtn">保存</a>
+            </div>
+        </div>
+        <div class="itemTitle">
+            小秘书价格设置
+        </div>
+        <div class="editInfo overlength clearfix">
+            <div class="formList">
+                <div class="formListL">单次小秘书价格</div>
+                <div class="formListR"><input type="text" class="msgInput" value="100"><span class="ml10">元</span></div>
+            </div>
+            <div class="formList mt20">
+                <a href="javascript:;" class="mainBtn">保存</a>
+            </div>
+        </div>
+    </div>
+</div>

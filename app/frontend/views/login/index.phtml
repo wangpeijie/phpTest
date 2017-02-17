@@ -1,0 +1,109 @@
+
+<div class="wrapper">
+    <?php
+    $this->partial("commen/header");
+    ?>
+    <div class="content">
+        <div class="banner">
+            <div class=" max1200">
+                <div class="loginBox pd40">
+                    <p class="title">登录</p>
+                    <form class="mt20">
+                        <div class="formList">
+                            <input type="text" placeholder="帐号：" name="account" />
+                        </div>
+                        <div class="formList">
+                            <input type="password" placeholder="密码：" name="password" />
+                        </div>
+                        <div class="clearfix mt20">
+                            <label class="fl rememberPw"><input type="checkBox" class="displayN" name="rememberPw"/><span class="checkItem yellow"></span><span class="p16 color656">记住密码</span></label>
+                            <a href="/login/forget" class="fr p16 color656">忘记密码</a>
+                        </div>
+                        <a href="javascript:;" class="loginBtn mt20 p16" role="login">立即登录</a>
+                        <p class="tac mt20 p16 color656">使用第三方账号登录</p>
+                        <div class="socialLogin clearfix mt20">
+                            <div class="list">
+                                <a href="javascript:;" class="tac color656"><img src="/web/images/weixin.fw.png" /><span class="displayB mt10">微信</span></a>
+                            </div>
+                            <div class="list">
+                                <a href="javascript:;" class="tac color656"><img src="/web/images/qq.fw.png" /><span class="displayB mt10">QQ</span></a>
+                            </div>
+                            <div class="list">
+                                <a href="javascript:;" class="tac color656"><img src="/web/images/weibo.fw.png" /><span class="displayB mt10">微博</span></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <div class="">
+                            <img src="/web/images/banner.fw.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+$this->partial("commen/footer");
+?>
+<script>
+        $(function () {
+                if ($.cookie('login_account')) {
+                        $('input[name="account"]').val($.cookie('login_account'));
+                        $('input[name="rememberPw"]').attr('checked', true);
+                        rpcJSON('decrypt', {password: $.cookie('login_password')}, function (backData) {
+                                $('input[name="password"]').val(backData);
+                        }, function (msg) {
+                                }, '/rpc');
+                } else {
+                        $('input[name="rememberPw"]').attr('checked', false);
+                }
+                $('.wraper').delegate('a[role]', click, function () {
+                        var $this = $(this),role = $this.attr('role');
+                        switch (role) {
+                                case'login':
+                                        var data = getFormValue($('form')),
+                                                msg = '';
+                                        if (!data.account) {
+                                                msg = '请输入账号';
+                                        } else if (!data.password) {
+                                                msg = '请输入密码';
+                                        }
+                                                        ;
+                                        if (msg) {
+                                                Tips('error', msg);
+                                        } else {
+                                                rpcJSON('login', data, function (backData) {
+                                                        if ($('input[name="rememberPw"]').prop('checked')) {
+                                                                $.cookie('login_account', data.account, {expires: 7, path: '/'});
+                                                                rpcJSON('encrypt', {password: data.password}, function (backData) {
+                                                                        $.cookie('login_password', backData, {expires: 7, path: '/'});
+                                                                }, function (msg) {
+                                                                        
+                                                                }, '/rpc');
+                                                        } else {
+                                                                $.cookie('login_account', null);
+                                                                $.cookie('login_password', null);
+                                                        }
+                                                        Tips('success', '登陆成功，正在为您跳转', 1000, function () {
+                    //                                                        window.location.href='/my';
+                                                    });
+                                            }, function (msg) {
+                                                Tips('error', msg);
+                                            }, '/loginrpc');
+                                        }
+                                        break;
+                        }
+                });
+                $(document).keydown(function (event) {
+                        if (event.keyCode == 13) {
+                                $('a[role="login"]').click();
+                        }
+                });
+        });
+</script>

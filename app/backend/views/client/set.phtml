@@ -1,0 +1,78 @@
+<div class="bgf1f1">
+    <div class="wraper">
+        <?php
+        $this->partial("commen/header", array('on' => 'client'));
+        ?>
+        <div class="navShadow">
+        </div>
+        <div class="content">
+            <div class="headBar max1200 clearfix">
+                <?php $this->partial("commen/user"); ?>
+                <div class="footNav fr color999">
+                    <span>我的位置</span>><span>意向客户</span>><span><a href="javascript:;">链接设置</a></span>
+                </div>
+            </div>
+            <div class="max1200 mainContent bgWhite">
+                <div class="mainContentHead">
+                    <div class="tabs">
+                        <ul class="p18">
+                            <li><a href="/client">关注我的人</a></li>
+                            <li><a href="/client/supply">我的供求</a></li>
+                            <li class="active"><a href="/client/set">链接设置</a></li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="vipContent"> <!--主体模块-->
+                    <div class="vipArgument">
+                        <div class="getInfo clearfix payinput">
+    
+                            <div class="formList mt20 clearfix">
+                                <div class="formListL">原链接</div>
+                                <div class="formListR"><p class="color999 linehight40" id="oldLink"></p></div>
+                            </div>
+                            <div class="formList mt20 clearfix">
+                                <div class="formListL">设置新链接</div>
+                                <div class="formListR"><input type="text" placeholder="" name="newLink"></div>
+                            </div>
+                            <div class="formList mt20 clearfix">
+                                <div class="formListR">
+                                    <p class="mt20"><a href="javascript:;" class="p18 mainBtn" role="submit">保存</a></p>
+    
+                                </div>
+                            </div>                        
+                        </div>  
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        <?php
+        $this->partial("commen/footer");
+        ?>
+    </div>
+</div>
+<script>
+(function(e){
+	rpcJSON('getLink',{},function(backData){
+		$('#oldLink').text(backData);
+	},function(msg){
+	},'/clientrpc');
+	$('a[role="submit"]').on(click,function(){
+		var newLink = $('input[name="newLink"]').val();
+		if(!newLink){
+			Tips('error','请输入新链接')
+		}else{
+			rpcJSON('editLink',{link:newLink},function(backData){
+				Tips('success','设置成功',1000,function(){
+					$('input[name="newLink"]').val('');
+					$('#oldLink').text(newLink);
+				});
+			},function(msg){
+				Tips('error',msg||'设置失败');
+			},'/clientrpc');
+		};
+	});
+	
+})(jQuery)
+</script>

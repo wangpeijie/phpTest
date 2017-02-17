@@ -1,0 +1,58 @@
+
+
+<link rel="stylesheet" href="/admin/js/plugins/codemirror/codemirror.css">
+<link rel="stylesheet" href="/admin/js/plugins/codemirror/theme/solarized.css">
+
+<div class="main-title cf">
+    <h2>插件快速创建</h2>
+</div>
+<!-- 表单 -->
+<form id="form" action="" method="post" class="form-horizontal doc-modal-form">
+    <div class="form-item">
+        <div class="controls">
+            <label class="textarea input-large has_adminlist hidden">
+                <textarea name="admin_list" id="admin_list">
+                        'model'=>'Example',		//要查的表
+			'fields'=>'*',			//要查的字段
+			'map'=>'',			//查询条件, 如果需要可以再插件类的构造方法里动态重置这个属性
+			'order'=>'id desc',		//排序,
+			'listKey'=>array( 		//这里定义的是除了id序号外的表格里字段显示的表头名
+				'字段名'=>'表头显示名'
+			),
+                </textarea>
+            </label>
+        </div>
+    </div>
+    <div class="form-item">
+        <button class="btn btn-return" type="button" id="preview">预 览</button>
+        <button class="btn ajax-post_custom submit-btn" target-form="form-horizontal" id="submit">确 定</button>
+        <button class="btn btn-return" onclick="javascript:history.back(-1);">返 回</button>
+    </div>
+</form>
+
+
+<script type="text/javascript" src="/admin/js/plugins/codemirror/codemirror.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/codemirror/xml.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/codemirror/javascript.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/codemirror/clike.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/codemirror/php.js"></script>
+<script type="text/javascript">
+                $('#preview').click(function () {
+                    var editor = CodeMirror.fromTextArea('#admin_list', {
+                        lineNumbers: true,
+                        matchBrackets: true,
+                        mode: "application/x-httpd-php",
+                        indentUnit: 4,
+                        gutter: true,
+                        fixedGutter: true,
+                        indentWithTabs: true,
+                        readOnly: true,
+                        lineWrapping: true,
+                        height: 500,
+                        enterMode: "keep",
+                        tabMode: "shift",
+                        theme: "solarized"
+                    });
+                    editor.setValue('4567891132');
+                });
+</script>

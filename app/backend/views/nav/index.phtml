@@ -1,0 +1,36 @@
+<link href="/web/js/plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+<?php
+$this->partial("commen/header", array('on' => 'client'));
+?>
+<style>
+    .leftNav{width: 20%;height: 100%;text-align: center; background: #2222;}
+    .rightNav{width: 80%;height: 100%;}
+    .leftNav ul li{width: 100%;height: 40px;line-height: 40px}
+    .backiframe{width: 100%;height: 100%;}
+    .iframe{position: fixed;top: 0;right: 0;}
+</style>
+<div class="leftNav left">
+    <ul>
+        <li data-url="/admin/nav/front" class="active"><a href="javascript:;">前台</a></li>
+        <li data-url="/admin/nav/back"><a href="javascript:;">后台</a></li>
+    </ul>
+</div>
+<div class="rightNav right">
+    <!--    <form>
+            <input type="text" name="title" placeholder="标题">
+            <input type="text" name="url" placeholder="地址">
+            <input type="text" name="point" placeholder="唯一标识">
+            <a href="javascript:;" role="submit">确定</a>
+        </form>-->
+    <iframe class="backiframe" src=""></iframe>
+</div>
+
+<script src="/web/js/plugins/swiper/swiper-3.3.1.jquery.min.js" type="text/javascript"></script>
+<script>
+        $(function () {
+                $('iframe').attr('src', $('.leftNav').find('li:first').data('url'));
+                $('.leftNav').find('li').click(function () {
+                        $('iframe').attr('src', $(this).data('url'));
+                });
+        });
+</script>

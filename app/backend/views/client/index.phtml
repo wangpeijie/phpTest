@@ -1,0 +1,148 @@
+<div class="bgf1f1">
+<div class="wraper">
+    <?php
+    $this->partial("commen/header", array('on' => 'client'));
+    ?>
+    <div class="navShadow">
+    </div>
+    <div class="content" id="wraper">
+        <div class="headBar max1200 clearfix">
+            <?php $this->partial("commen/user"); ?>
+            <div class="footNav fr color999">
+                <span>我的位置</span>><span>意向客户</span>><span><a href="javascript:;">关注我的人</a></span>
+            </div>
+        </div>
+        <div class="max1200 mainContent bgWhite">
+            <div class="mainContentHead">
+                <div class="tabs">
+                    <ul class="p18">
+                        <li class="active"><a href="/client">关注我的人</a></li>
+                        <li><a href="/client/supply">我的供求</a></li>
+                        <li><a href="/client/set">链接设置</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="vipContent"> <!--主体模块-->
+                <div class="vipTable">
+                    <table width="100%">
+                        <thead>
+                            <tr class="p16 bgf5f5">
+                                <th>用户名</th>
+                                <th>我的故事</th>
+                                <th>我的推荐</th>
+                                <th>联系方式</th>
+                                <th>点击链接</th>
+                                <th>收藏我的</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <?php
+    $this->partial("commen/footer");
+    ?>
+</div>
+    </div>
+<script>
+        $(function () {
+		
+		function getData(){
+			rpcJSON('client',{},function(backData){
+				var html='';
+				if(backData&&backData.length){
+					$.each(backData,function(i,item){
+						html+='<tr data-id="'+item.id+'">\
+                                <td><a href="javascript:;" role="userName" class="color018" data-userid="'+item.from_uid+'">'+item.name+'</a></td>\
+                                <td>'+item.story+'</td>\
+                                <td>'+item.groom+'</td>\
+                                <td>'+item.contact+'</td>\
+                                <td>'+item.link_num+'次</td>\
+                                <td>'+(item.is_collection?'已收藏':'未收藏')+'</td>\
+                                <td><a href="javascript:;" class="ffaHover" role="remMarks">'+item.remarks+'</a></td>\
+                                <td><a href="javascript:;" class="ffaHover" role="delete">删除</a></td>\
+                            </tr>';
+					});
+				};
+				$('tbody').html(html);
+			},'','/clientrpc')
+		};
+		getData();
+        var wraper = $('#wraper');
+                wraper.delegate('a[role]', 'click', function () {
+					var role=$(this).attr('role'),
+						$this = $(this);
+					 switch (role) {
+						case 'userName':
+							var id = $this.data('userid');
+							rpcJSON('getInfo',{id:id},function(backData){
+								var DialogEl = $('<div><div class="socialPic fl">\
+                                                <img data-src="'+backData.pic+'">\
+                                        </div>\
+                                        <div class="userText">\
+                                                <p><img data-src="'+backData.pic+'" data-crop="1" /></p>\
+                                                <p>手机:'+backData.mobile+'</p>\
+                                                <p>邮箱:'+backData.email+'</p>\
+                                                <p>地址：'+backData.address+'</p>\
+                                                <p>助理姓名：'+backData.assistant_name+'</p>\
+                                                <p>助理电话:'+backData.assistant_tel+'</p>\
+                                        </div></div>');
+										$('img',DialogEl).setThumbImageView();
+										ConfirmDialog('用户信息', DialogEl, {
+												width: 480,
+												confirmText: ''
+										});
+							},function(msg){
+								Tips('error','获取用户资料失败');
+							},'/clientrpc');
+						break;
+						case 'remMarks':
+							var content = $this.text();
+							var DialogEl = $('<div><form><textarea class="remMarks" name="remarks" value="'+content+'">'+content+'</textarea></form></div>');
+							Confirm(DialogEl, function () {
+								var data = getFormValue($('form', DialogEl)),
+									id = $this.parents('tr:first').data('id');
+				                if (!data.remarks) {
+		                       	 Tips('error', '请输入备注');
+		                        }else{
+			  					  data.id=id;
+								  rpcJSON('editInfo',data,function(){
+									  Tips('success','添加成功',500,function(){
+										  $this.text(data.remarks);
+									  });
+								  },function(msg){
+									  Tips('error',msg||'添加失败')
+								  },'/clientrpc');
+								};
+							}, '', {
+							   width: 420,
+			                   title: "添加备注"
+							});
+						break;
+						case 'delete':
+							var id = $this.parents('tr:first').data('id');
+							Confirm('确认删除该记录？', function () {
+								rpcJSON('delClient', {id:id}, function () {
+									Tips("success", "删除成功", 500, function () {
+									 	$this.parents('tr:first').remove();
+									});
+								}, function (msg) {
+									Tips('error', msg);
+								}, '/clientrpc');
+								},'',{
+								   width: 420,
+				                   title: "确认删除"
+							});
+						break;
+					};
+				
+                });
+        });
+</script>

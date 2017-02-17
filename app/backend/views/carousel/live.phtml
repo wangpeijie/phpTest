@@ -1,0 +1,32 @@
+<link href="http://sdk.cdn.videojj.com/actilive/actilive.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="http://sdk.cdn.videojj.com/actilive/actilive.js"></script>
+
+<div id="wrapper">
+    <div id="app"></div>
+</div>
+<script>
+        $(function () {
+//                new ActiLive({
+//                appRootId: "app",
+//                        platformId: "574d758684a65443004f3946",
+//                        token: "<?php //echo $token;    ?>"
+//                });
+            var xmlLoader
+                :URLLoader = new URLLoader();
+                    xmlLoader.addEventListener(Event.COMPLETE, configLoaded);
+            xmlLoader.load(new URLRequest("http://sdk.cdn.videojj.com/flash/bin/vjj_config.xml?" + Math.random()));
+
+            var loader
+                :Loader = new Loader();
+                    loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadCompleteHandler);
+
+            function configLoaded(e:Event):void
+            {
+            xmlLoader.removeEventListener(Event.COMPLETE, configLoaded);
+                    var xml:XML = new XML(xmlLoader.data);
+                    var sdk_url:String = xml.@src2;
+                    loader.load(new URLRequest(sdk_url));
+            }
+        });
+
+</script>

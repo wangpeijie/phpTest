@@ -1,0 +1,70 @@
+<link href="/web/js/plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+<?php
+$this->partial("commen/header", array('on' => 'client'));
+?>
+<div class="wraper">
+    <div class="formListL">
+        <a href="javascript:;" class="user_photo"><img id="photpsrc" src="" /></a>
+    </div>
+    <div class="formListR">
+        <p id="uploadmsg">最佳尺寸 60px*60px</p>
+        <p><a href="javascript:;" id="photpsrc" class="redFc">上传头像</a></p>
+    </div>
+    <div><a href="javascript:;" class="mainBtn ml10" id="upload">上传会员</a></div>
+</div>
+<script src="/web/js/plupload.full.min.js"></script>
+<script src="/web/js/plugins/swiper/swiper-3.3.1.jquery.min.js" type="text/javascript"></script>
+<script>
+        (function (e) {
+            var uploader = new plupload.Uploader({
+                runtimes: 'html5,flash,silverlight,html4',
+                url: '/index/test2',
+                browse_button: 'upload',
+                max_file_size: '5mb',
+                flash_swf_url: '/web/js/plugins/plupload/Moxie.swf',
+                silverlight_xap_url: '/web/js/plugins/plupload/Moxie.xap',
+                filters: 'jpg,png,jpeg,gif' ? [{title: '上传文件', extensions: 'jpg,png,jpeg,gif'}] : '',
+                autostart: true,
+                multi_selection: true,
+                init: {
+                    FilesAdded: function (up, files) {//添加地址
+                        uploader.start();
+                    },
+                    StateChanged: function () {
+                    },
+                    UploadProgress: function (up, file) {
+                        $('#uploadmsg').html('上传已完成' + file.percent + '%').show();
+                    },
+                    FileUploaded: function (up, file, response) {//文件上传成功
+                        if (!response.response) {
+                            Tips('error', '上传失败');
+                            return false;
+                        }
+                        var data = $.parseJSON(response.response);
+                        if (data.code == 0) {
+                            $('#photpsrc').attr('src', data.data);
+                        } else {
+                            Tips('error', '上传失败');
+                        }
+                    },
+                    Error: function (up, err) {//失败
+                        var msg = '';
+                        switch (err.message) {
+                            case'File extension error.':
+                                msg = '文件格式不正确';
+                                break;
+                            case'File size error.':
+                                msg = '文件大小不正确';
+                                break;
+                            default:
+                                msg = '上传失败';
+                        }
+                        Alert(msg);
+                    },
+                    UploadComplete: function (uploader, files) {
+                    }
+                }
+            });
+            uploader.init();
+        })(jQuery)
+</script>

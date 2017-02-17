@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/admin/js/plugins/Nivo-Slider-jQuery-master/nivo-slider.css" type="text/css" media="screen" />
+<style>
+    .photo{width: 100%;height: 500px}
+</style>
+<div id="wrapper">
+    <div id="slider" class="nivoSlider photo">
+        <a href="#"><img src="/admin/images/weibo.fw.png" alt="" class="photo"/></a>
+        <a href="#"><img src="/admin/images/logo.png" alt="" title="title" class="photo"/></a>
+        <a href="#"><img src="/admin/images/ioserwei.png"  alt="" class="photo"/></a>
+        <a href="#"><img src="/admin/images/androiderwei.png"  alt="" title="title4" class="photo"/></a>
+    </div>
+</div>
+<script type="text/javascript" src="/admin/js/plugins/Nivo-Slider-jQuery-master/jquery.nivo.slider.pack.js"></script>
+<script>
+        $(function () {
+            $('#slider').nivoSlider({nextText:'aa'});
+        });
+</script>
+<!--
+参数名                    参数说明                                      参数类型	默认值
+effect                  切换样式 	字符串	‘random’
+slices                  针对slice样式的切换级数，数字越大切换越慢过渡越小	数字	15
+boxCols                 针对box样式的切换列数，数字越大切换越慢过渡越小	数字	8
+boxRows                 针对box样式的切换行数，数字越大切换越慢过渡越小	数字	4
+animSpeed               切换动画的速度                                     数字	500
+pauseTime               相邻两张幻灯片切换的间隔时间                         数字	3000
+startSlide              从第几张图片开始切换                                数字	0
+directionNav            是否显示‘上一张/下一张’导航	                         布尔值	true
+controlNav              是否显示数字导航	                                 布尔值	true
+controlNavThumbs	是否用缩略图导航	布尔值	false
+pauseOnHover            当鼠标移到幻灯片上的时候是否暂停切换	布尔值	true
+manualAdvance           是否强制手动切换	布尔值	false
+prevText                ’上一张‘的文字 	字符串	‘Prev’
+nextText                ’下一张‘的文字	字符串	‘Next’
+randomStart             是否从一张随机的图片开始切换	布尔值	false
+beforeChange            在幻灯片切换之前的回调函数	函数	function(){}
+afterChange             在幻灯片切换之后的回调函数	函数	function(){}
+slideshowEnd            在所有幻灯片都切换完毕后的回调函数	函数	function(){}
+lastSlide               在最后一张幻灯片显示的回调函数	函数	function(){}
+afterLoad               在幻灯片加载完成后的回调函数	函数	function(){}
+切换效果
+sliceDown
+sliceDownLeft
+sliceUp
+sliceUpLeft
+sliceUpDown
+sliceUpDownLeft
+fold
+fade
+random
+slideInRight
+slideInLeft
+boxRandom
+boxRain
+boxRainReverse
+boxRainGrow
+boxRainGrowReverse
+-->

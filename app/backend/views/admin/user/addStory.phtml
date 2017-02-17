@@ -1,0 +1,44 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_story', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>新增故事</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">            
+        <div class="editInfo clearfix">
+            <div class="formList">
+                <div class="formListL">指定会员</div>
+                <div class="formListR">
+                    <input class="inputNormal" placeholder="">
+                </div>
+            </div>
+            <div class="formList">
+                <div class="formListL">个人写真</div>
+                <div class="formListR"><a href="javascript:;" class="addBtn"><i class="icon-add"></i></a></div>
+            </div>
+            <div class="formList">
+                <div class="formListL">我的格言</div>
+                <div class="formListR">
+                    <textarea class="inputNormal" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="formList">
+                <div class="formListL">我的故事</div>
+                <div class="formListR">
+                    <textarea class="inputNormal" placeholder="富文本"></textarea>
+                </div>
+            </div>
+            <div class="formList mt20">
+                <a href="javascript:;" class="mainBtn">确定</a>
+            </div>
+        </div>
+    </div>
+</div>

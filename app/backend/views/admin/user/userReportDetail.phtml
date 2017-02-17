@@ -1,0 +1,70 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_report', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>查看举报内容</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="itemTitle">
+            举报内容
+        </div>
+        <div class="editInfo overlength clearfix">
+            <div class="formList">
+                <div class="formListL">举报内容</div>
+                <div class="formListR">
+                    <div class="detail">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="itemTitle">
+            管理员记录
+        </div>
+        <div class="editInfo overlength clearfix">
+            <div class="formList">
+                <div class="formListL">客户姓名</div>
+                <div class="formListR">张三</div>
+            </div>
+            <div class="formList">
+                <div class="formListL">记录时间</div>
+                <div class="formListR">2016/12/12 12:12</div>
+            </div>
+            <div class="formList">
+                <div class="formListL">记录内容</div>
+                <div class="formListR">
+                    <div class="detail">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="itemTitle">
+            新增处理
+        </div>
+        <div class="editInfo overlength clearfix">
+            <div class="formList">
+                <div class="formListL">处理内容</div>
+                <div class="formListR">
+                    <textarea class="inputNormal"></textarea>
+                </div>
+                <div class="formListR">
+                    <label><input type="checkbox"><div class="select"></div>处理完毕</label>
+                </div>
+            </div>
+            <div class="formList mt20">
+                <a href="javascript:;" class="mainBtn">提交</a>
+            </div>
+        </div>
+    </div>
+</div>

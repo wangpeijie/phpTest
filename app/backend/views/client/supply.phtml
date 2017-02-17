@@ -1,0 +1,65 @@
+<div class="bgf1f1">
+<div class="wraper" id="wraper">
+    <?php
+    $this->partial("commen/header", array('on' => 'client'));
+    ?>
+    <div class="navShadow">
+    </div>
+    <div class="content">
+        <div class="headBar max1200 clearfix">
+            <?php $this->partial("commen/user"); ?>
+            <div class="footNav fr color999">
+                <span>我的位置</span>><span>意向客户</span>><span><a href="javascript:;">我的供求</a></span>
+            </div>
+        </div>
+        <div class="max1200 mainContent bgWhite">
+            <div class="mainContentHead">
+                <div class="tabs">
+                    <ul class="p18">
+                        <li><a href="/client">关注我的人</a></li>
+                        <li class="active"><a href="/client/supply">我的供求</a></li>
+                        <li><a href="/client/set">链接设置</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="vipContent"> <!--主体模块-->
+                <div class="vipTable">
+                    <table width="100%">
+                        <thead>
+                            <tr class="p16 bgf5f5">
+                                <th>供求标题</th>
+                                <th>查看人数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <?php
+    $this->partial("commen/footer");
+    ?>
+</div>
+</div>
+<script>
+(function(e){
+	function getData(){
+		rpcJSON('mySupply',{},function(backData){
+			var html='';
+			if(backData&&backData.length){
+				$.each(backData,function(i,item){
+					html+='<tr><td>'+item.title+'</td><td><a href="/client/detail?id='+item.id+'" class="color018">'+item.view_num+'</a></td></tr>';
+				});
+			};
+			$('tbody').html(html);
+		},function(msg){
+		},'/clientrpc');
+	};
+	getData();
+	
+})(jQuery)
+</script>

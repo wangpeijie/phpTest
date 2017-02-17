@@ -1,0 +1,133 @@
+<?php
+$this->partial("commen/header");
+?>
+<div class="content">
+    <div class="wrapper">
+        <div class="lineText"><span class="red">QQ账号登录</span></div>
+        <p class="tac loginTips">欢迎你！Aimm，完善你的信息，以后你也可以使用手机号和密码来登录友好了。</p>
+        <form class="loginForm loginForm2 clearfix">
+            <div class="left tac">
+                <img src="images/face.jpg" />
+            </div>
+            <div class="right ewmCode">
+                <div class="loginRow">
+                    <div class="markBox"><input type="text" class="textInput"><span class="mark"><mark>＊</mark>手机号</span></div>
+                </div>
+                <div class="loginRow">
+                    <div class="markBox"><input type="password" class="textInput"><span class="mark"><mark>＊</mark>昵称</span></div>
+                </div>
+                <div class="loginRow">
+                    <div class="markBox"><input type="password" class="textInput"><span class="mark"><mark>＊</mark>密码</span></div>
+                </div>
+                <div class="loginRow">
+                    <div class="markBox"><input type="password" class="textInput"><span class="mark"><mark>＊</mark>确认密码</span></div>
+                </div>
+                <div class="loginRow">
+                    <a href="javascript:;" class="btn b3 fr small getCodeBtn">获取验证码</a>
+                    <span class="getCode">
+                        <div class="markBox"><input type="tel" class="textInput"><span class="mark"><mark>＊</mark>验证码</span></div></span>
+                </div>
+
+                <div class="loginRow loginRowTips">
+                    <span><label><input type="checkbox" />接受友好用户协议</label></span>
+                </div>
+                <a href="javascript:;" class="btn b1 loginBtn mt20 bold">提交</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<?php
+$this->partial("commen/footer");
+?>
+<script>
+        (function ($) {
+            if ($.cookie("rmbUser") == "true") {
+                $('input[name="rememberPassword"]').prop("checked", true);
+                var account = $.cookie("account"),
+                        password = $.cookie("password");
+                $('input[name="account"]').val(account);
+                $('input[name="password"]').val(password);
+            }
+            ;
+            var vcodeURL = '/login/vcode?',
+                    rpcURL = '/userrpc',
+                    form = $('#form'),
+                    onSucess = function () {
+
+                        window.location.href = getURL();
+                    },
+                    formSubmit = function () {
+                        var value = getFormValue(form),
+                                msg = '';
+                        if (!value.account) {
+                            msg = '账号不能为空';
+                        } else if (value.password.length < 6 || value.password.length > 24) {
+                            msg = '密码应为6-24位字符';
+                        }
+                        ;
+
+                        if (msg) {
+                            Tips('error', msg);
+                        } else {
+                            rpcJSON('signIn', value, function (backData) {
+                                //记住密码
+                                if ($('input[name="rememberPassword"]').prop("checked")) {
+                                    $.cookie("rmbUser", "true", {expires: 7, path: '/'});
+                                    $.cookie("password", value.password, {expires: 7, path: '/'});
+                                    $.cookie("account", value.account, {expires: 7, path: '/'});
+                                } else {
+                                    $.cookie("rmbUser", "false", {expires: 7, path: '/'});
+                                }
+                                ;
+                                Tips('success', '登录成功，正在为您跳转', 1500, function () {
+                                    onSucess();
+                                });
+                            }, function (msg) {
+                                Tips('error', msg);
+                                $('input[name="vcode"]', form).val('');
+                            }, rpcURL);
+                        }
+                    };
+
+            form.delegate('a[role]', click, function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                switch ($this.attr('role')) {
+                    case 'submit':
+                        formSubmit();
+                        break;
+                }
+            });
+
+            $('.markBox input').focus(function () {
+                $(this).siblings('.mark').hide();
+            });
+            $('.markBox input').each(function () {
+                if ($(this).val()) {
+                    $(this).siblings('.mark').hide();
+                }
+                        ;
+            });
+            $('.markBox input').blur(function () {
+                if (!$(this).val())
+                                $(this).parent().find('.mark').show();
+            });
+
+            function getURL() {
+                var ref = '';
+                if (document.referrer.length > 0 && document.referrer.indexOf('dds.tuweile') >= 0) {
+                    ref = document.referrer;
+                } else {
+                    ref = '/index/index';
+                }
+                        ;
+                if (document.referrer.indexOf('/register/') >= 0 || document.referrer.indexOf('/login/') >= 0) {
+                    ref = '/index/index';
+                }
+                        ;
+                return ref;
+            }
+                ;
+        })(jQuery);
+</script>

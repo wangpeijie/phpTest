@@ -1,0 +1,27 @@
+<link href="/web/js/plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+<div class="wraper" id="wraper">
+    <div class="formList">
+        <div class="formListL">开始时间
+            <a href="javascript:;" class="user_photo"><img id="photpsrc" src="" /></a>
+        </div>
+        <div class="formListR">
+            <script id="container" name="content" type="text/plain">
+                这里写你的初始化内容
+            </script>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/admin/js/plugins/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script>
+        $(function () {
+            var ue = UE.getEditor('container', {
+                autoHeightEnabled: true,
+                autoFloatEnabled: true
+            });
+            var lang = ue.getOpt('lang'); //默认返回：zh-cn
+            ue.setContent('hello');
+            alert(ue.getContentTxt());
+        });
+</script>

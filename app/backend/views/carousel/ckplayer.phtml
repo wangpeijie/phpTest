@@ -1,0 +1,19 @@
+<div id="a1"></div>
+<script type="text/javascript" src="/admin/js/plugins/ckplayer/ckplayer.js" charset="utf-8"></script>
+<script>
+        $(function () {
+            function loadedHandler() {
+                alert('加载已完成');
+            }
+            var flashvars = {
+                f: 'https://pics.tuiyachina.com/148439244022325.mp4',
+                p: 1, //自动播放
+                c: 0,
+                b: 0
+            };
+            var params = {bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always', wmode: 'transparent'};
+            var video = ['https://pics.tuiyachina.com/148439244022325.mp4->video/mp4'];
+            CKobject.embed('/admin/js/plugins/ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', '600', '400', false, flashvars, video, params);
+        });
+
+</script>

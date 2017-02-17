@@ -1,0 +1,41 @@
+<?php
+$this->partial("commen/header");
+?>
+<div class="content pageContent max1200 tac">
+    <?php if ($num): ?>
+    <div class="tips_item">
+        <p class="title bold red">很抱歉！您这次手慢了！</p>
+        <?php if($num && ($num == 1 || $num == 2)):?>
+                <p class="h1 bold mt10">恭喜您是本次点币出量排名第<?php echo $num; ?>的，获得<span class="red"> <?php echo $set; ?> </span>折优惠补差价购买本商品。</p>
+        <?php endif;?>
+        <p class="h1 bold red mt5">补差价：<?php echo $needmoney; ?>元</p>
+        <p class="title2 bold mt5">此次点宝您可获得<span class="red"> <?php echo $integral;?> </span>点积分！</p>
+    </div>
+    <div class="tips_itemBtn tips_item2">
+        <a href="/treasure/differencePay/id/<?php echo $orderId;?>" class="btn b3 mt30 b160 bold">差价购买</a>
+        <a href="javascript:;" class="btn b1 mt30 b160 bold" role="getintegral">领取积分</a>
+    </div>
+    <?php else:?>
+    <div class="tips_item">
+        <p class="title bold red tac">抱歉您未参与此次点宝，不能参与补差价购买</p>
+        </div>
+    <?php endif; ?>
+</div>
+<?php
+$this->partial("commen/footer");
+?>
+<script>
+        $(function () {
+            $('a[role="getintegral"]').click(function () {
+                var id = <?php echo $goodsId; ?>;
+                rpcJSON('auctionpoints', {goodsId: id}, function (backData) {
+                    var success = function(){
+                            window.location.href = '/person/treasureorder';
+                    };
+                    Tips('success', '领取成功',1000,success);
+                }, function (msg) {
+                        Tips('error','不能领取积分');
+                }, '/integralrpc');
+            });
+        });
+</script>

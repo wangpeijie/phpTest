@@ -1,0 +1,98 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'supply_manage', 'in' => 'supply'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>供求管理</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="screenBtn">
+                    <a href="javascript:;">批量操作</a>
+                    <div class="screenBox">
+                        <li>批量删除</li>
+                    </div>
+                </div>
+                <div class="searchBar fl">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <a href="javascript:;" class="searchBtn">搜索</a>
+                </div>
+            </div>
+            <div class="btnBox tac">
+                <a href="javascript:;" id="" class="mainBtn">筛选</a>
+            </div>
+
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th width="40px"><label><input type="checkbox"><div class="select"></div></label></th>
+                        <th>供求类型</th>
+                        <th>信息主题</th>
+                        <th>发布人</th>
+                        <th>发布时间</th>
+                        <th>发布地区</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>供应</td>
+                        <td>123</td>
+                        <td>张三</td>
+                        <td>2015/12/12</td>
+                        <td>浙江杭州</td>                      
+                        <td><a href="打开前台活动页.html">查看</a><a href="javascript:;">禁止</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>需求</td>
+                        <td>123</td>
+                        <td>张三</td>
+                        <td>2015/12/12</td>
+                        <td>浙江杭州</td>                      
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>需求</td>
+                        <td>123</td>
+                        <td>张三</td>
+                        <td>2015/12/12</td>
+                        <td>浙江杭州</td>                      
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pageBar">
+            <div class="page fr">
+                <ul class="clearfix">
+                    <li><a href="javascript:;"><i class="icon-left"></i></a></li>
+                    <li><a href="javascript:;" class="active">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li><a href="javascript:;">4</a></li>
+                    <li><a href="javascript:;"><i class="icon-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="pageBar_num fl"><p class="sFc">共<span class="lFc">2</span>条数据，每页显示
+                    <select>
+                        <option>10</option>
+                    </select>
+                    <span>条数据</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

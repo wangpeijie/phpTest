@@ -1,0 +1,54 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'ad_price', 'in' => 'ad'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>固定位广告价格（天数×元/天）</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">            
+        <div class="editInfo clearfix">
+            <div class="formList">
+                <div class="formListL">消息首页</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">消息-搜索</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">发现首页</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">发现-人脉</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">发现-社团</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">发现-活动</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">发现-供求</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">发现-更多</div>
+                <div class="formListR"><input type="text" class="msgInput" value=""><span class="ml10">元/天</span></div>                    
+            </div>
+            <div class="formList mt20">
+                <a href="javascript:;" class="mainBtn">确定</a>
+            </div>
+        </div>
+    </div>
+</div>

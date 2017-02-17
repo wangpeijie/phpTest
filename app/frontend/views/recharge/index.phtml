@@ -1,0 +1,116 @@
+<html>
+        <head>
+                <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+                <title>微信支付</title>
+                <style>
+                        body{
+                                background:#f1f1f1;
+                        }
+                        .weixinPay{
+                                text-align:center;
+                                padding-top:50px;
+                        }
+                        .weixinPay font{
+                                font-size:12px;
+                                color:#666;
+                        }
+                        .weixinPay span{
+                                display:block;
+                                font-size:25px;
+                                margin-top:10px;
+                        }
+                        .weixinPay button{
+                                background-color: #dd0000;
+                                margin-top:20px;
+                                color: #fff;
+                                display: inline-block;
+                                text-align: center;
+                                padding: 0 30px;
+                                font-size: 14px;
+                                line-height: 36px;
+                                border-radius: 2px;
+                                vertical-align: middle;
+                                text-decoration:none;
+                                border:0;
+                        }
+                </style>
+                <script type="text/javascript">
+                        //调用微信JS api 支付
+                        function jsApiCall()
+                        {
+                                WeixinJSBridge.invoke(
+                                        'getBrandWCPayRequest',
+<?php echo $jsApiParameters; ?>,
+                                        function(res) {
+                                                WeixinJSBridge.log(res.err_msg);
+                                                //				alert(res.err_code+res.err_desc+res.err_msg);
+                                                var redirectUrl = '<?php echo $redirectUrl; ?>';
+                                                if (res.err_msg == "get_brand_wcpay_request:ok" && redirectUrl) {
+                                                        window.location.href = redirectUrl;
+                                                } else {
+                                                        //返回跳转到订单详情页面
+                                                        window.location.reload();
+                                                }
+                                        }
+                                );
+                        }
+
+                        function callpay()
+                        {
+                                if (typeof WeixinJSBridge == "undefined") {
+                                        if (document.addEventListener) {
+                                                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                                        } else if (document.attachEvent) {
+                                                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                                                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                                        }
+                                } else {
+                                        jsApiCall();
+                                }
+                        }
+                </script>
+        <!--	<script type="text/javascript">
+                //获取共享地址
+                function editAddress()
+                {
+                        WeixinJSBridge.invoke(
+                                'editAddress',
+                <?php echo $editAddress; ?>,
+                                function(res){
+                                        var value1 = res.proviceFirstStageName;
+                                        var value2 = res.addressCitySecondStageName;
+                                        var value3 = res.addressCountiesThirdStageName;
+                                        var value4 = res.addressDetailInfo;
+                                        var tel = res.telNumber;
+                                        
+        //				alert(value1 + value2 + value3 + value4 + ":" + tel);
+                                }
+                        );
+                }
+                
+                window.onload = function(){
+                        if (typeof WeixinJSBridge == "undefined"){
+                            if( document.addEventListener ){
+                                document.addEventListener('WeixinJSBridgeReady', editAddress, false);
+                            }else if (document.attachEvent){
+                                document.attachEvent('WeixinJSBridgeReady', editAddress); 
+                                document.attachEvent('onWeixinJSBridgeReady', editAddress);
+                            }
+                        }else{
+                                editAddress();
+                        }
+                };
+                
+                </script>-->
+        </head>
+        <body>
+                <div class="weixinPay">
+                        <br/>
+                        <font>该笔订单支付金额为<span style="display:block;"><?php echo $total_fee; ?></span></font><br/><br/>
+                        <div align="center">
+                                <button style="cursor: pointer;" type="button" onclick="callpay()" >立即支付</button>
+                        </div>
+                </div>
+        </body
+</html>

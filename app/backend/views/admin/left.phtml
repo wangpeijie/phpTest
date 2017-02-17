@@ -1,0 +1,59 @@
+<div class="nav">
+    <ul>
+        <li class="active">统计</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'statistics_general' ? 'active' : ''; ?>"><a href="index">一般统计</a></div>
+            <div class="list <?php echo $on == 'statistics_income' ? 'active' : ''; ?>"><a href="/admin/statisticsIncome">收入统计</a></div>
+        </div>
+        <li>会员系统</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'user_ordinary' ? 'active' : ''; ?>"><a href="/admin/userOrdinary">普通会员</a></div>
+            <div class="list <?php echo $on == 'user_vip' ? 'active' : ''; ?>"><a href="/admin/userVip">VIP会员</a></div>
+            <div class="list <?php echo $on == 'user_QR' ? 'active' : ''; ?>"><a href="/admin/userQR">二维码管理</a></div>
+            <div class="list <?php echo $on == 'user_story' ? 'active' : ''; ?>"><a href="/admin/userStory">故事管理</a></div>
+            <div class="list <?php echo $on == 'user_recommend' ? 'active' : ''; ?>"><a href="/admin/userRecommend">推荐管理</a></div>
+            <div class="list <?php echo $on == 'user_news' ? 'active' : ''; ?>"><a href="/admin/userNews">会员动态管理</a></div>
+            <div class="list <?php echo $on == 'user_notice' ? 'active' : ''; ?>"><a href="/admin/userNotice">系统通知</a></div>
+            <div class="list <?php echo $on == 'user_secretary' ? 'active' : ''; ?>"><a href="/admin/userSecretary">小秘书管理</a></div>
+            <div class="list <?php echo $on == 'user_service' ? 'active' : ''; ?>"><a href="/admin/userService">客服聊天管理</a></div>
+            <div class="list <?php echo $on == 'user_report' ? 'active' : ''; ?>"><a href="/admin/userReport">举报管理</a></div>
+        </div>
+        <li>社团系统</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'community_manage' ? 'active' : ''; ?>"><a href="/admin/communityManage">社团管理</a></div>
+            <div class="list <?php echo $on == 'community_class' ? 'active' : ''; ?>"><a href="/admin/communityClass">社团分类</a></div>
+        </div>
+        <li>供求系统</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'activity_manage' ? 'active' : ''; ?>"><a href="/admin/supplyManage">供求管理</a></div>
+            <div class="list <?php echo $on == 'activity_class' ? 'active' : ''; ?>"><a href="/admin/supplyClass">供求分类</a></div>
+        </div>
+        <li>活动系统</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'supply_manage' ? 'active' : ''; ?>"><a href="/admin/activityManage">活动管理</a></div>
+            <div class="list <?php echo $on == 'supply_class' ? 'active' : ''; ?>"><a href="/admin/activityClass">活动分类</a></div>
+        </div>
+        <li>广告系统</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'ad_audit' ? 'active' : ''; ?>"><a href="/admin/adOrder">广告订单</a></div>
+            <div class="list <?php echo $on == 'top_order' ? 'active' : ''; ?>"><a href="/admin/topOrder">置顶订单</a></div>
+            <div class="list <?php echo $on == 'ad_price' ? 'active' : ''; ?>"><a href="/admin/adPrice">固定位广告价格设置</a></div>
+            <div class="list <?php echo $on == 'top_price' ? 'active' : ''; ?>"><a href="/admin/topPrice">置顶位广告价格设置</a></div>
+        </div>
+        <li>帮助管理</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'official_recommendation' ? 'active' : ''; ?>"><a href="/admin/officialRecommendation">官方推荐</a></div>
+            <div class="list <?php echo $on == 'message' ? 'active' : ''; ?>"><a href="/admin/message">意见和建议</a></div>
+            <div class="list <?php echo $on == 'problem' ? 'active' : ''; ?>"><a href="/admin/problem">常见问题</a></div>
+            <div class="list <?php echo $on == 'service' ? 'active' : ''; ?>"><a href="/admin/service">服务条款设置</a></div>
+            <div class="list <?php echo $on == 'community_regulations' ? 'active' : ''; ?>"><a href="/admin/communityRegulations">社团规定设置</a></div>
+            <div class="list <?php echo $on == 'vip_terms' ? 'active' : ''; ?>"><a href="/admin/vipTerms">VIP服务条款设置</a></div>
+            <div class="list <?php echo $on == 'industry' ? 'active' : ''; ?>"><a href="/admin/industry">行业和职务管理</a></div>
+        </div>
+        <li>管理员管理</li>
+        <div class="navson">
+            <div class="list <?php echo $on == 'manager_list' ? 'active' : ''; ?>"><a href="/admin/managerList">管理员管理</a></div>
+            <div class="list <?php echo $on == 'role_list' ? 'active' : ''; ?>"><a href="/admin/roleList">角色管理</a></div>
+        </div>
+    </ul>
+</div>

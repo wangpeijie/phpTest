@@ -1,0 +1,66 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'problem', 'in' => 'help'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>常见问题</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="screenBtn">
+                    <a href="javascript:;">批量操作</a>
+                    <div class="screenBox">
+                        <li>批量删除</li>
+                    </div>
+                </div>
+            </div>
+            <div class="searchBar">
+                <input type="text"><a href="javascript:;" class="searchBtn">搜索</a>
+            </div>
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th width="40px"><label><input type="checkbox"><div class="select"></div></label></th>
+                        <th>标题</th>
+                        <th>排序</th>
+                        <th>内容</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>怎么注册？</td> 
+                        <td>供求问题</td>
+                        <td>20个字</td>          
+                        <td><a href="/admin/problemDetail">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>怎么注册？</td> 
+                        <td>供求问题</td>
+                        <td>20个字</td>          
+                        <td><a href="/admin/problemDetail">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>怎么注册？</td> 
+                        <td>供求问题</td>
+                        <td>20个字</td>          
+                        <td><a href="/admin/problemDetail">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>>

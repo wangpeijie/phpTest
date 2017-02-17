@@ -1,0 +1,27 @@
+<link href="/web/js/plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+<style>
+    #photpsrc{width: 20%;height: 100px;float: left;padding: 10px 10px 10px 10px}
+</style>
+<div class="wraper">
+    <?php foreach ($data as $v): ?>
+            <?php if (strstr($v['mimeType'], 'image')): ?>
+                    <div class="formListL">
+                        <a href="javascript:;" class="photo">
+                            <img id="photpsrc" src="<?php echo $this->config->upload->url . $v['key'] ?>" />
+                        </a>
+                    </div>
+            <?php else: ?>
+                    <pre>
+                        <?php
+                        print_r($v);
+                        ?>
+                    </pre>
+            <?php endif; ?>
+    <?php endforeach; ?>
+</div>
+<script src="/web/js/plugins/swiper/swiper-3.3.1.jquery.min.js" type="text/javascript"></script>
+<script>
+        $(function () {
+
+        });
+</script>

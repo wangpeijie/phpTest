@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/admin/js/plugins/datetimepicker/css/datetimepicker.css">
+<script type="text/javascript" src="/admin/js/plugins/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+<p>日期：<input type="text" id="datetimepicker" size="30">&nbsp;<input type="text" id="alternate" size="30"></p>
+<script type="text/javascript" src="/admin/js/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+                language: "zh-CN", //语言选择中文
+                showSecond: true,
+//                format: "Y-m-d", //格式化日期
+                timepicker: true, //关闭时间选项
+//                yearStart:2000, //设置最小年份
+//                yearEnd: 2050, //设置最大年份
+                todayButton: false,    //关闭选择今天按钮
+//                autoclose: true,//当选择一个日期之后是否立即关闭此日期时间选择器。
+                minuteStep:1
+            });
+            $('.datetimepicker').hide();
+            $('#datetimepicker').on('change', function(){
+                    $('.datetimepicker').hide();
+            });
+        });
+</script>
+

@@ -1,0 +1,71 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_QR', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>张三的注册用户创建的社团</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="searchBar fl">
+                    <input type="text" placeholder="搜索账号或社团名称">
+                    <a href="javascript:;" class="searchBtn">搜索</a>
+                </div>
+            </div>
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th>社团名称</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>人数</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td>西游记</td>
+                        <td>唐僧</td>
+                        <td>2016/12/12</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>西游记</td>
+                        <td>唐僧</td>
+                        <td>2016/12/12</td>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="pageBar">
+            <div class="page fr">
+                <ul class="clearfix">
+                    <li><a href="javascript:;"><i class="icon-left"></i></a></li>
+                    <li><a href="javascript:;" class="active">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li><a href="javascript:;">4</a></li>
+                    <li><a href="javascript:;"><i class="icon-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="pageBar_num fl"><p class="sFc">共<span class="lFc">2</span>条数据，每页显示
+                    <select>
+                        <option>10</option>
+                    </select>
+                    <span>条数据</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

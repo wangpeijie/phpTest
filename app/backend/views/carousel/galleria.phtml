@@ -1,0 +1,157 @@
+<link rel="stylesheet" href="/admin/js/plugins/Nivo-Slider-jQuery-master/nivo-slider.css" type="text/css" media="screen" />
+<style>
+    .photo{width: 100%;height: 500px}
+</style>
+<div id="wrapper">
+    <section id="slider" class="nivoSlider photo">
+        <div class="dg-wrapper">
+            <a href="#"><img src="/admin/images/weibo.fw.png" alt="image01"><div>http://www.colazionedamichy.it/</div></a>
+            <a href="#"><img src="/admin/images/logo.png" alt="image02"><div>http://www.percivalclo.com/</div></a>
+            <a href="#"><img src="/admin/images/ioserwei.png" alt="image03"><div>http://www.wanda.net/fr</div></a>
+        </div>
+        <nav>	
+                <span class="dg-prev">&lt;</span>
+                <span class="dg-next">&gt;</span>
+        </nav>
+    </section>
+</div>
+<script type="text/javascript" src="/admin/js/jquery.gallery.js"></script>
+<script>
+        $(function () {
+            $('#slider').gallery({
+                autoplay: true
+            });
+        });
+</script>
+<!--<script>
+        $(function () {
+            /*=========================================================
+             * gallery.js 
+             * author:wuquanyao
+             * nickname:挪威森林
+             * email:wqynqa@163.com
+             * date:2015-10
+             * ver:1.0.0
+             *=========================================================*/
+            var Gallery = {};
+            (function (Gallery) {
+                Gallery.pc = function (config)
+                {
+                    factory(config);
+                }
+                Gallery.mobile = function (config)
+                {
+                    //do something,follow up!!
+                }
+                var wrapper, root, len, dotWrapper, dotTag, iwidth, awidth, height, dotWrapper, duration, index = 0, offset = 0, prev = 0;
+                //selector,pc or mobile,dot tag,duration
+                function factory(config)
+                {
+                    wrapper = document.querySelector(config['selector']);
+                    //render image
+                    create_img(config['data'], wrapper);
+                    root = wrapper.parentNode;
+                    len = count(wrapper);
+                    dotWrapper = wrapper.nextSibling;
+                    dotTag = config['dotTag'] || 'span';
+                    iwidth = root.offsetWidth;
+                    awidth = iwidth * len;
+                    height = root.offsetHeight;
+                    dotWrapper = wrapper.nextSibling;
+                    duration = config['duration'];
+                    //Render dot
+                    create_dot();
+                    //Interval
+                    intervalmove();
+                    //Event Listener
+                    mouseaction();
+                }
+
+                function create_img(imgs, wrapper)
+                {
+                    var tag = '', str = '';
+                    for (i in imgs) {
+                        tag = "<a href='%link%' target='%target%'><img src='%img%' width='100%' height='100%'></a>";
+                        for (key in imgs[i]) {
+                            regExp = new RegExp('(%' + key + '%)', 'g');
+                            tag = tag.replace(regExp, imgs[i][key]);
+                        }
+                        str += tag;
+                    }
+                    wrapper.innerHTML = str;
+                }
+                function create_dot()
+                {
+                    var span = "<span class='normal'></span>",
+                            regExp = new RegExp('(span)', 'g'),
+                            span = span.replace(regExp, dotTag),
+                            dots = '';
+                    for (i = 0; i < len; i++) {
+                        dots += span;
+                    }
+                    dotWrapper.innerHTML = dots;
+                }
+                function intervalmove(type)
+                {
+                    if (type === 'alone') {
+                        offset = index * iwidth;
+                        move();
+                    } else {
+                        dotWrapper.childNodes[index].className = 'active';
+                        window.interval = setInterval(function () {
+                            if ((index + 1) < len) {
+                                offset = (index + 1) * iwidth;
+                                prev = index;
+                                index++;
+                            } else {
+                                prev = index;
+                                offset = 0;
+                                index = 0;
+                            }
+                            move();
+                        }, duration);
+                    }
+                    function move() {
+                        dotWrapper.childNodes[prev].className = 'normal';
+                        dotWrapper.childNodes[index].className = 'active';
+                        wrapper.style.transition = "all 200ms linear 0ms";
+                        wrapper.style.transform = "translate(" + (-offset) + "px,0px)";
+                    }
+                }
+                function mouseaction()
+                {
+                    function eventparse(obj, type, func) {
+                        if (document.attachEvent) {
+                            var events = {click: 'onclick', mouseover: 'onmouseover', mouseout: 'onmouseout'};
+                            obj.attachEvent(events[type], func);
+                        } else {
+                            var events = {click: 'click', mouseover: 'mouseover', mouseout: 'mouseout'};
+                            obj.addEventListener(events[type], func, false);
+                        }
+                    }
+
+                    function init() {
+                        eventparse(root, 'mouseover', function () {
+                            window.clearInterval(window.interval);
+                        });
+                        eventparse(root, 'mouseout', function () {
+                            intervalmove();
+                        });
+                        for (i = 0; i < len; i++) {
+                            dotWrapper.childNodes[i].index = i;
+                            eventparse(dotWrapper.childNodes[i], 'click', function (e) {
+                                prev = index;
+                                index = e.target.index;
+                                intervalmove('alone');
+                            });
+                        }
+                    }
+                    init();
+                }
+                function count()
+                {
+                    return wrapper.childNodes.length;
+                }
+            })(Gallery);
+        });
+</script>-->

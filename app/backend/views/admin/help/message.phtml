@@ -1,0 +1,62 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'message', 'in' => 'help'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>意见和建议</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="screenBtn">
+                    <a href="javascript:;">批量操作</a>
+                    <div class="screenBox">
+                        <li>批量删除</li>
+                    </div>
+                </div>
+            </div>
+            <div class="searchBar">
+                <input type="text"><a href="javascript:;" class="searchBtn">搜索</a>
+            </div>
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th width="40px"><label><input type="checkbox"><div class="select"></div></label></th>
+                        <th>账号</th>
+                        <th>内容</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>13200000000</td> 
+                        <td>1111111</td>          
+                        <td><a href="/admin/messageDetail">查看</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>13200000000</td> 
+                        <td>啊实打实阿斯顿阿斯顿阿达撒</td>          
+                        <td><a href="/admin/messageDetail">查看</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>13200000000</td> 
+                        <td>啊实打实阿斯顿阿斯顿阿达撒</td>          
+                        <td><a href="/admin/messageDetail">查看</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>>

@@ -1,0 +1,289 @@
+
+    <div id="city">
+          <select class="prov"></select>  
+        <select class="city" disabled="disabled"></select>
+        <select class="dist" disabled="disabled"></select>
+    </div> 
+
+<script type="text/javascript" src="/admin/js/siteText.js"></script>
+<script>
+        $(function () {
+            datepicker($('input[role="starDate"]'), {});
+            timepicker($('input[role="starTime"]'), "yy-mm");
+            function  datepicker(input, opt) {
+                input.attr('readonly', true);
+                if (!$.fn.datepicker) {
+                    getScripts(['/web/js/plugins/datepicker/datepicker.css', '/web/js/plugins/datepicker/datepicker.js'], function () {
+                        datepicker(input, opt);
+                    });
+                    return;
+                }
+
+                var container = $('<div />'),
+                        dialog,
+                        defaultValue = input.val() || getNowDate(),
+                        options = $.extend(true, {
+                            date: defaultValue,
+                            showDefaultValue: true,
+                            autohide: true,
+                            inline: true,
+                            container: container,
+                            autoshow: true,
+                            pick: function (type) {
+                                if (options.autohide && type.view == 'day') {
+                                    dialog.hide();
+                                }
+                            }
+                        }, opt);
+
+                if (!input.val() && options.showDefaultValue) {
+                    input.val(getNowDate());
+                }
+                input.datepicker(options);
+                var dialogOpts = {
+                    container: input.parent(),
+                    overlay: 0,
+                    width: input.data('width') || input.outerWidth(),
+                    maxHeight: 650,
+                    height: 350,
+                    scroll: true,
+                    cls: 'picker SelectDialog',
+                    closeText: '',
+                    title: '',
+                    onCancel: function () {
+                        input.val(defaultValue);
+                        input.trigger('change');
+                    },
+                    onBeforeClose: function () {
+                        if (dialog.isHide)
+                                                return;
+                        dialog.hide();
+                    },
+                    onClose: function () {
+                        //dialog.hide();
+                    },
+                    position: {
+                        top: input.outerHeight(),
+                        left: input.position().left,
+                        position: 'absolute'
+                    }
+                };
+                input.on('click', function (e) {
+                    if (dialog) {
+                        if (dialog.isHide) {
+                            defaultValue = input.val();
+                            dialog.show();
+                        } else {
+                            dialog.hide();
+                        }
+                    } else {
+                        dialog = Dialog(container, dialogOpts);
+                    }
+                    e.stopPropagation();
+                });
+            }
+
+            /**
+             *设置日期选择器
+             */
+            function timepicker(input, opt) {
+                input.attr('readonly', true);
+                var container = $('<div class="timepicker" />'),
+                        dialog,
+                        defaultValue = input.val() || getNowDate('time'),
+                        selectedH,
+                        selectedM,
+                        selectedS,
+                        options = $.extend(true, {
+                            showDefaultValue: true
+                        }, opt),
+                        getLi = function (type, title) {
+                            var num = type == 'h' ? 24 : 60,
+                                    html = '<dl class="' + (type == 'h' ? 'hoursList' : 'minutesList') + '"><dt>' + selectedH + ':' + selectedM + ':' + selectedS + '</dt><dd><ul class="clearfix">';
+                            for (i = 0; i < num; i++) {
+                                var text = i <= 9 ? '0' + i : i;
+                                html += '<li data-num="' + text + '" data-type="' + type + '" class="' + (type == 'h' ? text == selectedH ? 'active' : '' : type == 'm' ? text == selectedM ? 'active' : '' : text == selectedS ? 'active' : '') + '">' + text + '</li>';
+                            }
+                                        ;
+                            html += '</ul></dd></dt>';
+                            return html;
+                        },
+                        getStart = function () {
+                            selectedH = defaultValue.split(':')[0] || '00';
+                            selectedM = defaultValue.split(':')[1] || '00';
+                            selectedS = defaultValue.split(':')[2] || '00';
+                            container.html(getLi('h', SiteText.selectHour));
+                        };
+
+
+                if (!input.val() && options.showDefaultValue) {
+                    input.val(getNowDate('time'));
+                }
+                container.delegate('li', click, function () {
+                    var type = $(this).data('type'),
+                            num = $(this).data('num');
+                    if (type == 'h') {
+                        selectedH = num;
+                        container.html(getLi('m', SiteText.selectMinute));
+                    } else if (type == 'm') {
+                        selectedM = num;
+                        container.html(getLi('s', SiteText.selectMinute));
+                    } else {
+                        selectedS = num;
+                        dialog.hide();
+                    }
+                    input.val(selectedH + ':' + selectedM + ':' + selectedS).trigger('change');
+                });
+
+                var dialogOpts = {
+                    container: input.parent(),
+                    overlay: 0,
+                    width: input.data('width') || input.outerWidth(),
+                    maxHeight: 650,
+                    height: 350,
+                    scroll: true,
+                    cls: 'picker SelectDialog',
+                    closeText: '',
+                    title: '',
+                    onCancel: function () {
+                        input.val(defaultValue);
+                        input.trigger('change');
+                    },
+                    onBeforeClose: function () {
+                        if (dialog.isHide)
+                                                return;
+                        dialog.hide();
+                    },
+                    onClose: function () {
+                        //dialog.hide();
+                    },
+                    position: {
+                        top: input.outerHeight(),
+                        left: input.position().left,
+                        position: 'absolute'
+                    }
+                };
+                input.on('click', function (e) {
+                    if (dialog) {
+                        if (dialog.isHide) {
+                            defaultValue = input.val();
+                            getStart();
+                            dialog.show();
+                        } else {
+                            dialog.hide();
+                        }
+                    } else {
+                        getStart();
+                        dialog = Dialog(container, dialogOpts);
+                    }
+                    e.stopPropagation();
+                });
+            }
+        });
+</script>
+<!--<p>日期：<input type="text" id="datepicker" size="30">&nbsp;<input type="text" id="alternate" size="30"></p>
+<p>动画：<br>
+    <select id="anim">
+        <option value="show">Show (默认)</option>
+        <option value="slideDown">滑下</option>
+        <option value="fadeIn">淡入</option>
+        <option value="blind">Blind (UI 百叶窗特效)</option>
+        <option value="bounce">Bounce (UI 反弹特效)</option>
+        <option value="clip">Clip (UI 剪辑特效)</option>
+        <option value="drop">Drop (UI 降落特效)</option>
+        <option value="fold">Fold (UI 折叠特效)</option>
+        <option value="slide">Slide (UI 滑动特效)</option>
+        <option value="">无</option>
+    </select>
+</p>
+<link rel="stylesheet" href="/admin/js/plugins/jquery-ui-1.12.1/jquery-ui.css">
+<script type="text/javascript" src="/admin/js/plugins/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script>
+        $(function () {
+            $("#datepicker").datepicker({
+                //显示其他月份的日期
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                showButtonPanel: true, //下部会多两个按钮 today panel
+//                        changeMonth: true, //月份变成下拉
+//                        changeYear: true, //年份变成下拉
+//                        numberOfMonths: 3, //显示多个月份
+//                        showOn: "button",
+//                        buttonImage: "/admin/images/logo.png",
+//                        buttonImageOnly: true//这三个会控制只让点击图片才出现日历
+                //在另一个输入框中填充带有一定格式的日期
+                altField: "#alternate", //填充区域
+                altFormat: "DD, d MM, yy", //填充格式
+                //通过 minDate 和 maxDate 选项限制可选择的日期范围
+//                        minDate: -20,
+//                        maxDate: "+1M +10D",
+                //显示一年中的第几周
+//                        showWeek: true,
+//                        firstDay: 2//每周从星期几开始 1 - 7
+            });
+            $("#anim").change(function () {
+                $("#datepicker").datepicker("option", "showAnim", $(this).val());
+            });
+        });
+</script>
+
+<p>格式选项：<br>
+    <select id="format">
+        <option value="mm/dd/yy">Default - mm/dd/yy</option>
+        <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+        <option value="d M, y">Short - d M, y</option>
+        <option value="d MM, y">Medium - d MM, y</option>
+        <option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+        <option value="&apos;day&apos; d &apos;of&apos; MM &apos;in the year&apos; yy">With text - 'day' d 'of' MM 'in the year' yy</option>
+    </select>
+</p>
+<script>
+        $(function () {
+            $("#datepicker").datepicker();
+            $("#format").change(function () {
+                $("#datepicker").datepicker("option", "dateFormat", $(this).val());
+            });
+        });
+</script>
+<p>日期：&nbsp;
+    <select id="locale">
+        <option value="ar">Arabic (&#8235;(&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</option>
+        <option value="zh-TW">Chinese Traditional (&#32321;&#39636;&#20013;&#25991;)</option>
+        <option value="">English</option>
+        <option value="fr" selected="selected">French (Fran&ccedil;ais)</option>
+        <option value="he">Hebrew (&#8235;(&#1506;&#1489;&#1512;&#1497;&#1514;</option>
+    </select></p>
+<script>
+        $(function () {
+            $("#datepicker").datepicker($.datepicker.regional[ "fr" ]);
+            $("#locale").change(function () {
+                $("#datepicker").datepicker("option",
+                        $.datepicker.regional[$(this).val()]);
+            });
+        });
+</script>
+选择一个日期范围
+<label for="from">从</label>
+<input type="text" id="from" name="from">
+<label for="to">到</label>
+<input type="text" id="to" name="to">
+<script>
+        $(function () {
+            $("#from").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 3,
+                onClose: function (selectedDate) {
+                    $("#to").datepicker("option", "minDate", selectedDate);
+                }
+            });
+            $("#to").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 3,
+                onClose: function (selectedDate) {
+                    $("#from").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+        });
+</script>-->

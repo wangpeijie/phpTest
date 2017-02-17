@@ -1,0 +1,61 @@
+<div class="dialogBg" style="display:none;">
+    <div class="promptLogin">
+        <div class="promptHead">
+            <a href="javascript:;" class="fr p18">关闭</a>
+        </div>
+        <div class="promptbody tac">
+            <p>请先登录或注册后使用</p>
+        </div>
+    </div>
+</div>
+<div class="customerContent">
+    <div class="customer bg018">
+        <P><a href="javascript:;" class="whiteColor">在线咨询</a></P>
+    </div>
+    <div class="customerList">
+        <p><img src="/web/images/qie.png">在线客服</p>
+        <p><img src="/web/images/qie.png">在线客服</p>
+    </div>
+    <div class="customerErwei mt20">
+        <img src="/web/images/ioserwei.png">
+        <p>IOS下载</p>
+    </div>
+    <div class="customerErwei mt20">
+        <img src="/web/images/androiderwei.png">
+        <p>安卓下载</p>
+    </div>
+</div>
+<!--客服悬窗-->
+<div class="header bgWhite">
+    <div class="top bg018">
+        <div class="max1200 clearfix">
+            <p class="fl p12">您好！欢迎访问友好平台</p>
+            <p class="fr p12 link"><a href="javascript:;">反馈</a><a href="javascript:;">使用帮助</a><a href="/my/safety">修改密码</a><a href="/login/loginOut">退出</a></p>
+        </div>
+    </div>
+    <div class="navBox max1200  clearfix">
+        <div class="logo fl"><a href="/"><img src="/web/images/logo.fw.png" alt="logo" /></a></div>
+        <div class="nav fr">
+            <ul class="clearfix">
+                <li><a href="/vip" class="<?php echo $on == 'vip' ? 'active' : ''; ?>">VIP设置</a></li>
+                <li><a href="/client" class="<?php echo $on == 'client' ? 'active' : ''; ?>">意向客户</a></li>
+                <li><a href="/activity" class="<?php echo $on == 'activity' ? 'active' : ''; ?>">发布活动</a></li>
+                <li><a href="/supply" class="<?php echo $on == 'supply' ? 'active' : ''; ?>">发布供求</a></li>
+                <li><a href="/community" class="<?php echo $on == 'community' ? 'active' : ''; ?>">社团管理</a></li>
+                <li><a href="/my" class="<?php echo $on == 'my' ? 'active' : ''; ?>">个人中心</a></li>
+                <li><a href="/ad" class="<?php echo $on == 'ad' ? 'active' : ''; ?>">广告管理</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+        $(function () {
+            //客服窗
+            $('.customer').on("mouseover", function () {
+                $(".customerContent").addClass("customerMove")
+            });
+            $('.customerContent').on("mouseleave", function () {
+                $(".customerContent").removeClass("customerMove")
+            });
+        });
+</script>

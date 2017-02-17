@@ -1,0 +1,124 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'role_list', 'in' => 'manager'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>添加角色</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">            
+        <div class="editInfo clearfix">
+            <div class="itemTitle mb20">
+                角色名称设置
+            </div>
+            <div class="formList">
+                <div class="formListL">角色名称</div>
+                <div class="formListR">
+                    <input type="text" class="inputNormal" placeholder="">
+                </div>
+            </div>
+
+            <div class="itemTitle mb20">
+                设置权限
+            </div>
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">统计</span></label>
+                </div>
+                <div class="classlyContent clearfix">
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">一般统计</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">收入统计</span></label></div>
+                </div>
+            </div> 
+
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">会员系统</span></label>
+                </div>
+                <div class="classlyContent clearfix">
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">普通会员管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">VIP会员管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">二维码管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">故事管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">推荐管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">会员动态管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">系统通知</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">小秘书管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">客服聊天记录</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">举报管理</span></label></div>
+                </div>
+            </div>  
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">社团系统</span></label>
+                </div>
+                <div class="classlyContent clearfix">
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">社团管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">社团分类</span></label></div>
+                </div>
+            </div> 
+
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">活动管理</span></label>
+                </div>
+            </div>
+
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">供求管理</span></label>
+                </div>
+            </div>
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">广告系统</span></label>
+                </div>
+                <div class="classlyContent clearfix">
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">广告审核</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">置顶订单</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">固定位广告价格设置</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">置顶位广告价格设置</span></label></div>
+                </div>
+            </div> 
+
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">帮助管理</span></label>
+                </div>
+                <div class="classlyContent clearfix">
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">意见和建议</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">常见问题</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">服务条款设置</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">社团规定设置</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">VIP服务条款设置</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">行业和职务管理</span></label></div>
+                </div>
+            </div> 
+
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">管理员管理</span></label>
+                </div>
+                <div class="classlyContent clearfix">
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">管理员管理</span></label></div>
+                    <div class="classlyItem"><label><input type="checkbox"><div class="select"></div><span class="ml10">角色管理</span></label></div>
+                </div>
+            </div> 
+
+            <div class="classly">
+                <div class="classlyTitle">
+                    <label><input type="checkbox"><div class="select"></div><span class="ml10 p16">查看完整会员账号</span></label>
+                </div>
+            </div> 
+            <div class="formList ml20">
+                <a href="javascript:;" class="mainBtn">确定</a>
+            </div>
+        </div>
+    </div>
+</div>

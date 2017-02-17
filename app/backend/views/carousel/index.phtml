@@ -1,0 +1,27 @@
+<link href="/web/js/plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+<?php
+$this->partial("commen/header", array('on' => 'client'));
+?>
+<style>
+    .leftNav{width: 20%;height: 100%;text-align: left; background: #2222; padding:10px 0 10px 20px;}
+    .rightNav{width: 80%;height: 100%;}
+    .leftNav ul li{width: 100%;margin: 0 auto}
+    .backiframe{width: 100%;height: 100%}
+    .iframe{position: fixed;top: 0;right: 0;}
+</style>
+<div class="leftNav left">
+    <?php echo Multiple\Backend\Models\Publics::leftNav($data);?>
+</div>
+<div class="rightNav right">
+    <iframe class="backiframe" src=""></iframe>
+</div>
+
+<script src="/web/js/plugins/swiper/swiper-3.3.1.jquery.min.js" type="text/javascript"></script>
+<script>
+        $(function () {
+                $('iframe').attr('src', $('.leftNav').find('li:first').data('url'));
+                $('.leftNav').find('li').click(function () {
+                        $('iframe').attr('src', $(this).data('url'));
+                });
+        });
+</script>

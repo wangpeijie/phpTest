@@ -1,0 +1,50 @@
+<link href="/web/js/plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+<div class="wraper" id="wraper">
+    <div class="formList">
+        <div class="formListL">开始时间
+            <a href="javascript:;" class="user_photo"><img id="photpsrc" src="" /></a>
+        </div>
+        <div class="formListR">
+            <textarea id="editor_id" name="content" style="width:700px;height:300px;">
+                <?php echo htmlspecialchars('&AElig; &lt;strong&gt;HTML内容&lt;/strong&gt;'); ?>
+            </textarea>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/admin/js/plugins/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/kindeditor/lang/zh_CN.js"></script>
+<script>
+        $(function () {
+                KindEditor.ready(function(K){
+                        window.editor = K.create('#editor_id', {
+                                width: '800px',
+                                cssPath:'/admin/js/plugins/kindeditor/plugins/code/prettify.css',
+                                filterMode:true,
+                                items: [
+                                        'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                                        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                                        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                                        'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                                        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                                        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+                                        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                                        'anchor', 'link', 'unlink', '|', 'about'
+                                ],
+                                uploadJson : '/admin/js/plugins/kindeditor/php/upload_json.php',
+				fileManagerJson : '/admin/js/plugins/kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+				}
+                        });
+                });
+        });
+</script>

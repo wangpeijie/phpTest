@@ -1,0 +1,17 @@
+<?php
+$this->partial("commen/header");
+?>
+<div class="content pageContent tac">
+    <div class="tips_item tips_item2">
+        <?php if (isset($error)): ?>
+                <p class="title bold red"><?php echo $error['error']; ?></p>
+        <?php endif; ?>
+        <a href="/index/index" class="btn b3 mt30 b160 bold">首页</a>
+        <?php if (isset($error)): ?>
+                <a href="<?php echo $error['url']; ?>" class="btn b1 mt30 b160 bold"><?php echo $error['botton']; ?></a>
+        <?php endif; ?>
+    </div>
+</div>
+<?php
+$this->partial("commen/footer");
+?>

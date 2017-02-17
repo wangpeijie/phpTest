@@ -1,0 +1,104 @@
+<style>
+    body{
+        background:#576174;
+    }
+</style>
+<div class="headLogo tac">
+    <iframe width="700" scrolling="no" height="80" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=2&icon=1&num=5">
+    <!--num 是天数(最大是5)；py 是城市 eg：py=minhang； id 是模板样式； color 是添加文字颜色； code:图标样式-->
+    </iframe>
+    <!--<img src="/admin/images/logo.fw.png">-->
+    <!--<p class="p22 mt10">登 录</p>-->
+</div>
+<div class="login">        
+    <form class="color576 tal mt30" id="form">
+        <div class="formList">
+            <div class="formListL tar">账号:</div>
+            <div class="formListR">
+                <input type="text" placeholder="请输入账号" class="normalInput" name="account">
+            </div>
+        </div>
+        <div class="formList">
+            <div class="formListL tar">邮箱:</div>
+            <div class="formListR">
+                <input type="email" placeholder="请输入账号" class="normalInput" id="email" name="email">
+            </div>
+        </div>
+        <div class="formList">
+            <div class="formListL tar">密码:</div>
+            <div class="formListR">
+                <input type="password" placeholder="请输入账号" class="normalInput" name="password" onKeyUp="pwStrength(this.value)" onBlur="pwStrength(this.value)">
+
+                <table class="normalInput" border="0" cellpadding="0" cellspacing="0"  style="float:left;line-height: 0px"> 
+                    <tr align="center"> 
+                        <td width="30%" id="strength_L" bgcolor="#f5f5f5" style="text-align:center">弱</td> 
+                        <td width="30%" id="strength_M" bgcolor="#f5f5f5" style="text-align:center">中</td> 
+                        <td width="30%" id="strength_H" bgcolor="#f5f5f5" style="text-align:center">强</td> 
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="formList">
+            <div class="formListR tar">
+                <a href="javascript:void(0);" class="mainBtn" role="submit">登录</a>
+            </div>
+        </div>
+    </form>
+</div>
+<!--测试密码强度-->
+<script type="text/javascript" src="/admin/js/strength.js"></script>
+<!--邮箱提示-->
+<script type="text/javascript" src="/admin/js/autoMail.js"></script>
+<script>
+                        $(function () {
+                            $('#email').autoMail({
+                                emails: ['qq.com', '163.com', '126.com', 'sina.com', 'sohu.com', 'yahoo.cn', 'gmail.com', 'hotmail.com', 'live.cn']
+                            });
+
+
+                            $(document).ready(function () {
+                                $('.login').addClass('active');
+                            });
+                            var rpcURL = '/admin/loginrpc',
+                                    form = $('#form'),
+                                    onSucess = function () {
+                                        window.location.href = '/admin/nav';
+                                    },
+                                    formSubmit = function () {
+                                        var value = getFormValue(form),
+                                                msg = '';
+                                        if (!value.account) {
+                                            msg = '账号不能为空';
+                                        }
+
+                                        if (msg) {
+                                            Tips('error', msg);
+                                        } else {
+                                            rpcJSON('login', value, function (backData) {
+                                                //记住密码
+                                                Tips('success', '登录成功，正在为您跳转', 1500, function () {
+                                                    onSucess();
+                                                });
+                                            }, function (msg) {
+                                                Tips('error', msg);
+                                                $('input[name="vcode"]', form).val('');
+                                            }, rpcURL);
+                                        }
+                                    };
+
+                            $(document).keydown(function (event) {
+                                if (event.keyCode == 13) {
+                                    formSubmit();
+                                }
+                            });
+
+                            form.delegate('a[role]', click, function (e) {
+                                var $this = $(this);
+                                switch ($this.attr('role')) {
+                                    case 'submit':
+                                        formSubmit();
+                                        break;
+                                }
+                            });
+                        });
+</script>

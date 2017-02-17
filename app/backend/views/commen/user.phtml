@@ -1,0 +1,16 @@
+<div class="userPic fl">
+    <img data-ratio="1" data-crop="1" id="userFace" />
+</div>
+<div class="userName fl">
+    <span class="p18" id="userName"></span><span class="p16 color656" id="userStatus"></span>
+</div>
+<script>
+(function(e){
+	rpcJSON('getInfos',{},function(backData){
+		$('#userFace').data('src',backData.face).setThumbImageView();
+		$('#userStatus').text(backData.is_vip);
+		$('#userName').text(backData.name);
+	},function(msg){
+	},'/myrpc');
+})(jQuery)
+</script>

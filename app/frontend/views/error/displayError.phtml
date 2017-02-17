@@ -1,0 +1,27 @@
+<?php
+$this->partial("commen/header");
+?>
+<style>
+    .content{margin-top: 5px;}
+    .tac{text-align: center;}
+    .red{color: red;}
+    .bold{font-weight: bold}
+    .btn{background-color: #dd0000;border-radius: 5px 5px 5px 5px;margin:0 50px 0 50px}
+    .text{font-size:30px;padding: 5px 5px 5px 5px}
+</style>
+<div class="content tac">
+    <?php //if (isset($error)): ?>
+    <p class="red" style="font-size: 40px;">提示信息</p>
+<!--                <p class="title bold red"><?php //echo $error['error'];    ?></p>-->
+    <?php //endif; ?>
+    <div style="margin-top:30px">
+        <a href="/index/index" class="btn b3 bold text">首页</a>
+        <?php //if (isset($error)): ?>
+        <a href="www.baidu.com" class="btn b1 bold text">百度</a>
+        <!--<a href="<?php // echo $error['url'];    ?>" class="btn b1 mt30 b160 bold"><?php // echo $error['botton'];    ?></a>-->
+        <?php //endif; ?>
+    </div>
+</div>
+<?php
+$this->partial("commen/footer");
+?>

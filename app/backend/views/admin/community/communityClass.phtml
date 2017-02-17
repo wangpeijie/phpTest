@@ -1,0 +1,79 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'community_class', 'in' => 'community'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>社团分类</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="screenBtn">
+                    <a href="javascript:;">批量操作</a>
+                    <div class="screenBox">
+                        <li>批量删除</li>
+                    </div>
+                </div>
+                <div class="searchBar fl">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <a href="javascript:;" class="searchBtn">搜索</a>
+                </div>
+            </div>
+            <div class="btnBox tac">
+                <a href="javascript:;" id="" class="mainBtn">添加社团</a><!--弹窗 字段：社团名称-->
+            </div>
+
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th>分类名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td>商协会</td>
+                        <td><a href="javascript:;">编辑</a><!--弹窗 字段：社团名称--><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td>商协会</td>
+                        <td><a href="javascript:;">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td>校友会</td>
+                        <td><a href="javascript:;">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="pageBar">
+            <div class="page fr">
+                <ul class="clearfix">
+                    <li><a href="javascript:;"><i class="icon-left"></i></a></li>
+                    <li><a href="javascript:;" class="active">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li><a href="javascript:;">4</a></li>
+                    <li><a href="javascript:;"><i class="icon-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="pageBar_num fl"><p class="sFc">共<span class="lFc">2</span>条数据，每页显示
+                    <select>
+                        <option>10</option>
+                    </select>
+                    <span>条数据</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_vip', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>VIP会员</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="screenBtn">
+                    <a href="javascript:;">批量操作</a>
+                    <div class="screenBox">
+                        <li>批量删除</li>
+                    </div>
+                </div>
+                <div class="screenBtn overlength">
+                    <a href="javascript:;">排序</a>
+                    <div class="screenBox">
+                        <li>按小秘书数量排序（少到多）</li>
+                        <li>按VIP到期时间排序（近到远）</li>
+                        <li>按短信数量排序（少到多）</li>
+                    </div>
+                </div>
+            </div>
+            <div class="btnBox tac">
+                <a href="/admin/setUpVip" id="" class="mainBtn">VIP设置</a>
+                <a href="javascript:;" id="" class="mainBtn">筛选</a>
+            </div>
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th width="40px"><label><input type="checkbox"><div class="select"></div></label></th>
+                        <th class="pic">头像</th>
+                        <th>账号</th>
+                        <th>性别</th>
+                        <th>中文名</th>
+                        <th>英文名</th>
+                        <th>VIP到期时间</th>
+                        <th>短信数量</th>
+                        <th>小秘书数量</th>
+                        <th>账号状态</th>
+                        <th>二维码</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td><img src="/admin/images/logo.fw.png"></td>
+                        <td>13856953600</td>
+                        <td>男</td>
+                        <td>孙悟空</td>
+                        <td>Mr.sun</td>
+                        <td>2016/12/12</td>
+                        <td><a href="短信充值订单.html">4</a></td>
+                        <td><a href="小秘书订单.html">5</a></td>
+                        <td>正常</td>
+                        <td><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td><a href="/admin/editUser">编辑</a><a href="javascript:;" class="red">设置连接</a><a href="javascript:;">停用</a><a href="javascript:;">延长VIP</a><a href="javascript:;">取消VIP</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td><img src="/admin/images/logo.fw.png"></td>
+                        <td>13856953600</td>
+                        <td>男</td>
+                        <td>孙悟空</td>
+                        <td>Mr.sun</td>
+                        <td>2016/12/12</td>
+                        <td><a href="短信充值订单.html">4</a></td>
+                        <td><a href="小秘书订单.html">5</a></td>
+                        <td>停用</td>
+                        <td><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td><a href="/admin/editUser">编辑</a><a href="javascript:;">设置连接</a><a href="javascript:;">停用</a><a href="javascript:;">延长VIP</a><a href="javascript:;">取消VIP</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

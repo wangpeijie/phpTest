@@ -1,0 +1,131 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'ad_order', 'in' => 'ad'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>广告订单</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="screenBtn">
+                    <a href="javascript:;">批量操作</a>
+                    <div class="screenBox">
+                        <li>批量删除</li>
+                    </div>
+                </div>
+                <div class="screenBtn">
+                    <a href="javascript:;">全部位置</a>
+                    <div class="screenBox">
+                        <li>消息首页</li>
+                        <li>消息-搜索</li>
+                        <li>发现首页</li>
+                        <li>发现-人脉</li>
+                        <li>发现-社团</li>
+                        <li>发现-活动</li>
+                        <li>发现-供求</li>
+                        <li>发现-更多</li>
+                    </div>
+                </div>
+                <div class="screenBtn overlength">
+                    <a href="javascript:;">排序</a>
+                    <div class="screenBox">
+                        <li>按发布时间排序（近到远）</li>
+                        <li>按到期时间排序（近到远）</li>
+                    </div>
+                </div>
+                <div class="searchBar fl">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <a href="javascript:;" class="searchBtn">搜索</a>
+                </div>
+            </div>
+            <div class="btnBox tac">
+                <a href="/admin/addAd" id="" class="mainBtn">添加广告</a>
+            </div>
+
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th width="40px"><label><input type="checkbox"><div class="select"></div></label></th>
+                        <th>订单编号</th>
+                        <th>广告图片</th>
+                        <th>广告标题</th>
+                        <th>广告链接</th>
+                        <th>广告位置</th>
+                        <th>价格</th>
+                        <th>起止时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>111</td>
+                        <td class="adv"><img src="http://e.hiphotos.baidu.com/zhidao/pic/item/241f95cad1c8a786cda7ccb36409c93d71cf50f9.jpg"></td>
+                        <td>广而告之</td>
+                        <td><a href="http://www.baidu.com">http://www.baidu.com</a></td>
+                        <td>消息首页</td>
+                        <td>120.00元</td>
+                        <td><p>始：2016/12/12</p><p>末：2016/12/12</p></td>
+                        <td>未审核</td>                     
+                        <td><a href="javascript:;" class="red">审核广告</a><a href="添加广告.html">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>111</td>
+                        <td class="adv"><img src="http://e.hiphotos.baidu.com/zhidao/pic/item/241f95cad1c8a786cda7ccb36409c93d71cf50f9.jpg"></td>
+                        <td>广而告之</td>
+                        <td><a href="http://www.baidu.com">http://www.baidu.com</a></td>
+                        <td>消息首页</td>
+                        <td>120.00元</td>
+                        <td><p>始：2016/12/12</p><p>末：2016/12/12</p></td>
+                        <td>已过期</td>                     
+                        <td><a href="添加广告.html">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px"><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>111</td>
+                        <td class="adv"><img src="http://e.hiphotos.baidu.com/zhidao/pic/item/241f95cad1c8a786cda7ccb36409c93d71cf50f9.jpg"></td>
+                        <td>广而告之</td>
+                        <td><a href="http://www.baidu.com">http://www.baidu.com</a></td>
+                        <td>消息首页</td>
+                        <td>120.00元</td>
+                        <td><p>始：2016/12/12</p><p>末：2016/12/12</p></td>
+                        <td>正常</td>                     
+                        <td><a href="javascript:;">停用</a><a href="添加广告.html">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="pageBar">
+            <div class="page fr">
+                <ul class="clearfix">
+                    <li><a href="javascript:;"><i class="icon-left"></i></a></li>
+                    <li><a href="javascript:;" class="active">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li><a href="javascript:;">4</a></li>
+                    <li><a href="javascript:;"><i class="icon-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="pageBar_num fl"><p class="sFc">共<span class="lFc">2</span>条数据，每页显示
+                    <select>
+                        <option>10</option>
+                    </select>
+                    <span>条数据</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

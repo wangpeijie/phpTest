@@ -1,0 +1,79 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'user_recommend', 'in' => 'user'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>故事管理</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">
+        <div class="topBar clearfix"><!--筛选栏-->
+            <div class="screenBar">
+                <div class="screenBtn">
+                    <a href="javascript:;">批量操作</a>
+                    <div class="screenBox">
+                        <li>批量删除</li>
+                    </div>
+                </div>
+                <div class="searchBar fl">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <a href="javascript:;" class="searchBtn">搜索</a>
+                </div>
+            </div>
+            <div class="btnBox tac">
+                <a href="/admin/addRecommend" id="" class="mainBtn">新增推荐</a>
+            </div>
+        </div><!--筛选栏结束-->
+        <div class="tableBox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th width="40px"><label><input type="checkbox"><div class="select"></div></label></th>
+                        <th>账号</th>
+                        <th>中文名</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tac">
+                    <tr>
+                        <td><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>13800000000</td>
+                        <td>唐僧</td>
+                        <td><a href="/admin/editRecommend">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="checkbox"><div class="select"></div></label></td>
+                        <td>13800000000</td>
+                        <td>唐僧</td>
+                        <td><a href="/admin/editRecommend">编辑</a><a href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pageBar">
+            <div class="page fr">
+                <ul class="clearfix">
+                    <li><a href="javascript:;"><i class="icon-left"></i></a></li>
+                    <li><a href="javascript:;" class="active">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li><a href="javascript:;">4</a></li>
+                    <li><a href="javascript:;"><i class="icon-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="pageBar_num fl"><p class="sFc">共<span class="lFc">2</span>条数据，每页显示
+                    <select>
+                        <option>10</option>
+                    </select>
+                    <span>条数据</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

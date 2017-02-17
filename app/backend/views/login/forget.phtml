@@ -1,0 +1,93 @@
+<div class="forgetBg">
+    <div class="wraper">
+        <div class="max1200 tac">
+            <div class="losePassword">
+                <img src="/web/images/logo.fw.png">
+                <div class="losePasswordTitle mt20 p16"><span>忘记密码</span></div>
+                <div class="passwordContent">
+                	<form>
+                        <div class="formList">
+                            <input type="text" placeholder="手机号码" name="mobile">
+                        </div>
+    
+                        <div class="clearfix mt20">
+                            <div class="codeBtnBox fr"><a href="javascript:;" class="codeBtn" role="getCode">获取验证码</a></div>
+                            <div class="formList fl codeInput">
+                                <input type="text" placeholder="短信验证码" name="code">
+                            </div>
+                        </div>
+    
+                        <div class="formList mt20">
+                            <input type="password" placeholder="新密码" name="password1">
+                        </div>
+                        <div class="formList">
+                            <input type="password" placeholder="确认密码" name="password2">
+                        </div>
+                        <a href="javascript:;" class="confirmBtn mt20 p16" role="submit">确认</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+(function(e){
+	$('a[role="submit"]').on(click,function(){
+		var data = getFormValue($('form')),
+			msg='';
+		if(!data.mobile){
+			msg='请输入手机号';
+		}else if(!data.code){
+			msg='请输入验证码';
+		}else if(!data.password1){
+			msg='请输入密码';
+		}else if(data.password2!=data.password1){
+			msg='两次密码不一致';
+		}else if(data.password1.length<6||data.password1.length>24){
+			msg='密码应是6-24位字符';
+		};
+		if(msg){
+			Tips('error',msg);
+			return false;
+		}else{
+			rpcJSON('checkFgPwd',data,function(){
+				Tips('success','修改成功,正在为您跳转',1000,function(){
+					window.location.href='/index';
+				})
+			},function(msg){
+				Tips('error',msg||'修改失败');
+			},'/loginrpc');
+		};
+	});
+	$('.forgetBg').delegate('a[role="getCode"]:not(.disbled)',click,function(){
+		var $this = $(this),
+			timeDown = function () {
+				var time = 60,
+					timer = function () {
+						$this.addClass('disbled');
+						$this.text(time + 's后重新获取');
+						time--;
+						if (time == 0) {
+							resetButton();
+						};
+					},
+					interval = setInterval(timer, 1000),
+					resetButton = function () {
+						clearInterval(interval);
+						$this.removeClass('disbled').text('发送验证码');
+					};
+					
+			};
+		if(!$('input[name="mobile"]').val()){
+			Tips('error','请输入手机号');
+		}else{
+			rpcJSON('fgPwd',{mobile:$('input[name="mobile"]').val()},function(backData){
+				Tips('success','验证码已发送到您的手机，请注意查收');
+				timeDown();
+			},function(msg){
+				Tips('error',msg);
+			},'/loginrpc');
+		};
+	});
+})(jQuery)
+</script>

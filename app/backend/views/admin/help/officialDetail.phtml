@@ -1,0 +1,36 @@
+<div class="leftBar">
+    <div class="logo tac">
+        <a href="javascript:;">
+            <img src="/admin/images/logo.png">
+        </a>
+    </div>
+    <?php
+    $this->partial("admin/left", array('on' => 'official_recommendation', 'in' => 'help'));
+    ?>
+</div>
+<div class="mainContent">
+    <div class="mainTitle">
+        <span>添加官方推荐</span><span><a href="javascript:;" class="fr p12">退出登录</a></span>
+    </div>
+    <div class="mainData">            
+        <div class="editInfo clearfix">
+            <div class="formList">
+                <div class="formListL">推荐类型</div>
+                <div class="formListR">
+                    <select>
+                        <option>社团</option>
+                        <option>活动</option>
+                        <option>供求</option>
+                    </select>
+                </div>                    
+            </div>
+            <div class="formList">
+                <div class="formListL">指定推荐</div>
+                <div class="formListR"><a href="javascript:;" class="mainBtn">选择推荐</a></div>                    
+            </div>
+            <div class="formList mt20">
+                <a href="javascript:;" class="mainBtn">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
