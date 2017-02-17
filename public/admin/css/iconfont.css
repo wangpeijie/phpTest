@@ -1,0 +1,43 @@
+
+@font-face {
+	font-family: 'icon';
+	src:url("font/iconfont.eot?#") format("eot"),
+		url("font/iconfont.woff") format("woff"),
+		url("font/iconfont.ttf") format("truetype"),
+		url("font/iconfont.svg#iconfont") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"]{
+	font-family: icon;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-check:before { content: "\e600"; }
+.icon-close:before { content: "\e612"; }
+.icon-left:before { content: "\e60d"; }
+.icon-right:before { content: "\e60e"; }
+.icon-mail:before { content: "\e608"; }
+.icon-delete:before { content: "\e602"; }
+.icon-down:before { content: "\e605"; }
+.icon-eyes:before { content: "\e609"; }
+.icon-safe:before { content: "\e606"; }
+.icon-download:before { content: "\e604"; }
+.icon-certificate:before { content: "\e607"; }
+.icon-add2:before { content: "\e60c"; }
+.icon-delete1:before { content: "\e60a"; }
+.icon-add:before { content: "\e601"; }
+.icon-prevpage:before { content: "\e60b"; }
+.icon-nextpage:before { content: "\e60f"; }
+.icon-edit:before { content: "\e603"; }
+.icon-firstpage:before { content: "\e610"; }
+.icon-lastpage:before { content: "\e611"; }
+
+

@@ -1,0 +1,64 @@
+/**
+ * tips
+ */
+ 
+.tips{
+	position:fixed;
+	top:55px;
+	left:0;
+	width:100%;
+	text-align:center;
+}
+.tips .tipsPad{
+	color:#fff;
+	border-radius:2px;
+	display:inline-block;
+	vertical-align:middle;
+	line-height:35px;
+	height:36px;
+	padding:0 16px;
+	
+}
+.tips .tipsPad i{
+	font-size:20px;
+	margin-right:8px;
+	display:inline-block;
+	vertical-align:top;
+}
+.tipsLoading .tipsPad{
+	background:#389dc9;
+}
+.tipsSuccess .tipsPad{
+	background:#15D54C;
+}
+.tipsError .tipsPad{
+	background:#DD0000;
+}
+.tipsNews .tipsPad{
+	background:#0CD2E8;
+}
+.tipsWarning .tipsPad{
+	background:#FFCC00;
+}
+a:hover.ffaHover{
+	color:#ffa11b;
+}
+
+/*上传*/
+.speedContainer{
+	padding-bottom:20px;
+}
+.speedDiv{
+	position:relative;
+	height:20px;
+}
+.speedSpan{
+	position:absolute;
+	left:0;
+	display:inline-block;
+	width:50%;
+	top:0;
+	background:#018cc7;
+	height:20px;
+	border-radius:20px;
+}
